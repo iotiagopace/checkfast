@@ -268,7 +268,7 @@ select option { background:var(--brand-black); color:#fff; }
 .navbar-inner {
   max-width:1160px;
   margin:0 auto;
-  padding:18px 24px;
+  padding:14px 24px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -851,6 +851,9 @@ select option { background:var(--brand-black); color:#fff; }
 .footer-link { color:var(--brand-yellow); font-size:13px; font-weight:600; transition:opacity var(--dur-fast) ease; }
 .footer-link:hover { opacity:.75; }
 .footer-copy { font-size:11px; color:var(--text-on-dark-faint); }
+.footer-dev { font-size:11px; color:var(--text-on-dark-faint); }
+.footer-dev a { color:var(--text-on-dark-muted); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.15); transition:color var(--dur-fast) ease; }
+.footer-dev a:hover { color:var(--brand-yellow); border-bottom-color:var(--brand-yellow); }
 
 /* ══════════════════════════════════════════════
    FLOATING WHATSAPP
@@ -1093,7 +1096,7 @@ function NavBar({ scrollToForm }) {
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="navbar-inner">
-        <img src="assets/logo-dark-bg.png" alt="CheckFast — Franquia de Vistoria Veicular" height="40" style={{cursor:'pointer'}} onClick={scrollToForm} />
+        <img src="assets/logo-dark-bg.png" alt="CheckFast — Franquia de Vistoria Veicular" height="52" style={{cursor:'pointer', display:'block'}} onClick={scrollToForm} />
         <CTAButton variant="secondary" size="sm" onClick={scrollToForm}>
           QUERO SER FRANQUEADO
         </CTAButton>
@@ -1546,14 +1549,19 @@ function FooterSection() {
     <footer className="footer">
       <div className="footer-inner">
         <div>
-          <img src="assets/logo-dark-bg.png" alt="CheckFast Vistoria Veicular" height="44" style={{marginBottom:'4px'}} />
+          <img src="assets/logo-dark-bg.png" alt="CheckFast Vistoria Veicular" height="60" style={{display:'block', marginBottom:'6px'}} />
           <div className="footer-sub">Vistoria Veicular · Desde 2018 · Belo Horizonte, MG</div>
         </div>
         <a href="https://checkfastvistorias.com.br" className="footer-link" target="_blank" rel="noopener">
           checkfastvistorias.com.br ↗
         </a>
-        <div className="footer-copy">
-          © {new Date().getFullYear()} CheckFast Vistoria Veicular. Todos os direitos reservados.
+        <div>
+          <div className="footer-copy">
+            © {new Date().getFullYear()} CheckFast Vistoria Veicular. Todos os direitos reservados.
+          </div>
+          <div className="footer-dev" style={{marginTop:'4px'}}>
+            Desenvolvido por <a href="https://metry.cc" target="_blank" rel="noopener">metry.cc</a> ↗
+          </div>
         </div>
       </div>
     </footer>
