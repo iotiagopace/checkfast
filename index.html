@@ -6,10 +6,18 @@
 <title>CheckFast — Franquia de Vistoria Veicular</title>
 <meta name="description" content="Franquia de vistoria veicular com zero royalties, investimento a partir de R$ 57mil e retorno em 18-24 meses. Home Based ou Store in Store.">
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<!-- Poppins — self-hosted -->
+<style>
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-SemiBold.ttf') format('truetype'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-BoldItalic.ttf') format('truetype'); font-weight:700; font-style:italic; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-ExtraBold.ttf') format('truetype'); font-weight:800; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-Black.ttf') format('truetype'); font-weight:900; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('assets/fonts/Poppins-BlackItalic.ttf') format('truetype'); font-weight:900; font-style:italic; font-display:swap; }
+</style>
 
 <!-- React + Babel -->
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
@@ -40,17 +48,17 @@
   --yellow-glow:        rgba(245,166,35,0.08);
   --gradient-hero:         linear-gradient(135deg,#1A1A1A 0%,#0d0d0d 100%);
   --gradient-dark-section: linear-gradient(135deg,#1A1A1A 0%,#0d0d0d 50%,#2D2D2D 100%);
-  --font-display: 'Barlow Condensed','Arial Narrow',sans-serif;
-  --font-body:    'DM Sans','Segoe UI',system-ui,sans-serif;
-  --text-hero:       clamp(2rem,4.5vw,3.2rem);
-  --text-section:    clamp(1.75rem,4vw,2.5rem);
-  --text-metric:     clamp(1.5rem,3vw,2.2rem);
-  --text-metric-lg:  clamp(2.5rem,5vw,3.5rem);
-  --lh-headline: 1.10;
-  --lh-impact:   1.15;
-  --lh-body-lg:  1.60;
+  --font-display: 'Poppins', sans-serif;
+  --font-body:    'Poppins', sans-serif;
+  --text-hero:       clamp(1.9rem,3.8vw,2.9rem);
+  --text-section:    clamp(1.5rem,3.2vw,2.1rem);
+  --text-metric:     clamp(1.4rem,2.8vw,2rem);
+  --text-metric-lg:  clamp(2.2rem,4.5vw,3.2rem);
+  --lh-headline: 1.15;
+  --lh-impact:   1.20;
+  --lh-body-lg:  1.65;
   --ls-headline: -0.02em;
-  --ls-badge:     0.05em;
+  --ls-badge:     0.04em;
   --shadow-card:            0 2px 8px rgba(0,0,0,0.06);
   --shadow-card-hover:      0 12px 32px rgba(0,0,0,0.12);
   --shadow-card-dark:       0 2px 8px rgba(0,0,0,0.20);
@@ -149,11 +157,11 @@ select option { background:var(--brand-black); color:#fff; }
 }
 .logo {
   font-family:var(--font-display);
-  font-size:22px;
+  font-size:20px;
   font-weight:900;
   color:var(--neutral-white);
   text-transform:uppercase;
-  letter-spacing:-0.01em;
+  letter-spacing:0.02em;
   cursor:pointer;
 }
 .logo span { color:var(--brand-yellow); }
@@ -166,11 +174,11 @@ select option { background:var(--brand-black); color:#fff; }
   align-items:center;
   justify-content:center;
   gap:8px;
-  padding:15px 34px;
+  padding:14px 32px;
   font-family:var(--font-display);
-  font-size:16px;
+  font-size:14px;
   font-weight:700;
-  letter-spacing:var(--ls-badge);
+  letter-spacing:0.05em;
   text-transform:uppercase;
   border-radius:var(--radius-button);
   border:2px solid transparent;
@@ -306,8 +314,8 @@ select option { background:var(--brand-black); color:#fff; }
   font-size:var(--text-hero);
   font-weight:900;
   text-transform:uppercase;
-  letter-spacing:var(--ls-headline);
-  line-height:var(--lh-headline);
+  letter-spacing:-0.02em;
+  line-height:1.18;
   color:var(--neutral-white);
   margin-bottom:20px;
 }
@@ -434,7 +442,7 @@ select option { background:var(--brand-black); color:#fff; }
 .section-heading {
   font-family:var(--font-display); font-size:var(--text-section);
   font-weight:800; text-transform:uppercase;
-  letter-spacing:var(--ls-headline); line-height:var(--lh-impact);
+  letter-spacing:-0.01em; line-height:var(--lh-impact);
   margin-bottom:12px;
 }
 .section-heading.dark  { color:var(--brand-black); }
@@ -471,8 +479,8 @@ select option { background:var(--brand-black); color:#fff; }
 .card-dark:hover { box-shadow:var(--shadow-card-dark-hover); }
 .card-icon { font-size:30px; margin-bottom:14px; line-height:1; }
 .card-title {
-  font-family:var(--font-display); font-size:17px; font-weight:700;
-  text-transform:uppercase; letter-spacing:-0.01em; margin-bottom:8px;
+  font-family:var(--font-display); font-size:15px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0; margin-bottom:8px;
 }
 .card-light .card-title { color:var(--brand-black); }
 .card-dark  .card-title { color:var(--brand-yellow); }
