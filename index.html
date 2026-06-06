@@ -233,11 +233,27 @@ select option { background:var(--brand-black); color:#fff; }
    HERO
 ══════════════════════════════════════════════ */
 .hero {
-  background:var(--gradient-hero);
   min-height:100vh;
   padding:120px 24px 80px;
   position:relative;
   overflow:hidden;
+  background-color:var(--brand-black);
+
+  /* Imagem à direita + gradiente preto sobre ela para legibilidade */
+  background-image:
+    linear-gradient(
+      to right,
+      #0d0d0d 0%,
+      #0d0d0d 42%,
+      rgba(13,13,13,0.92) 54%,
+      rgba(13,13,13,0.55) 68%,
+      rgba(13,13,13,0.15) 82%,
+      rgba(13,13,13,0.0) 100%
+    ),
+    url('assets/hero-bg.jpg');
+  background-size:cover;
+  background-position:center right;
+  background-repeat:no-repeat;
 }
 /* Animated glow orbs */
 .hero-glow {
@@ -247,28 +263,28 @@ select option { background:var(--brand-black); color:#fff; }
   animation:pulse-glow 6s ease-in-out infinite;
 }
 .hero-glow-1 {
-  width:600px; height:600px;
-  top:-150px; right:-150px;
-  background:radial-gradient(ellipse at center, rgba(245,166,35,0.15) 0%, transparent 70%);
+  width:500px; height:500px;
+  bottom:-80px; left:-80px;
+  background:radial-gradient(ellipse at center, rgba(245,166,35,0.07) 0%, transparent 70%);
 }
 .hero-glow-2 {
-  width:400px; height:400px;
-  top:-60px; right:-60px;
-  background:radial-gradient(ellipse at center, rgba(245,166,35,0.08) 0%, transparent 70%);
-  animation-delay:2s;
+  width:300px; height:300px;
+  top:20%; left:35%;
+  background:radial-gradient(ellipse at center, rgba(245,166,35,0.04) 0%, transparent 70%);
+  animation-delay:3s;
 }
 .hero-glow-3 {
-  width:300px; height:300px;
-  bottom:-100px; left:-100px;
-  background:radial-gradient(ellipse at center, rgba(245,166,35,0.06) 0%, transparent 70%);
-  animation-delay:4s;
+  width:200px; height:200px;
+  top:10%; left:5%;
+  background:radial-gradient(ellipse at center, rgba(245,166,35,0.05) 0%, transparent 70%);
+  animation-delay:5s;
 }
 .hero-grid {
   max-width:1160px;
   margin:0 auto;
   display:grid;
-  grid-template-columns:1fr 420px;
-  gap:56px;
+  grid-template-columns:1fr 400px;
+  gap:48px;
   align-items:center;
   position:relative;
   z-index:1;
@@ -748,9 +764,28 @@ select option { background:var(--brand-black); color:#fff; }
   .investment-grid { grid-template-columns:1fr; }
   .process-grid    { grid-template-columns:repeat(3,1fr); }
   .process-grid::before { display:none; }
+  /* Em telas menores, gradiente cobre mais para legibilidade total */
+  .hero {
+    background-image:
+      linear-gradient(
+        to right,
+        #0d0d0d 0%,
+        #0d0d0d 55%,
+        rgba(13,13,13,0.9) 70%,
+        rgba(13,13,13,0.5) 100%
+      ),
+      url('assets/hero-bg.jpg');
+    background-position:center right 20%;
+  }
 }
 @media (max-width:640px) {
-  .hero { padding:100px 20px 60px; }
+  .hero {
+    padding:100px 20px 60px;
+    background-image:
+      linear-gradient(to bottom, rgba(13,13,13,0.7) 0%, #0d0d0d 60%),
+      url('assets/hero-bg.jpg');
+    background-position:center top;
+  }
   .navbar-inner { padding:14px 20px; }
   .stats-grid  { grid-template-columns:1fr 1fr; }
   .process-grid{ grid-template-columns:repeat(2,1fr); }
