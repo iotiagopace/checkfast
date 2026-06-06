@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CheckFast — Franquia de Vistoria Veicular</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+
+<style>
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────── */
+:root {
+  /* Colors – Brand */
+  --brand-yellow:       #F5A623;
+  --brand-yellow-hover: #E09000;
+  --brand-yellow-light: #FFF8E7;
+  --brand-yellow-muted: #FFF3D6;
+  --brand-black:        #1A1A1A;
+  --brand-dark-gray:    #2D2D2D;
+
+  /* Colors – Neutral */
+  --neutral-white:  #FFFFFF;
+  --neutral-light:  #F5F5F5;
+  --neutral-med:    #4A4A4A;
+  --neutral-border: #EEEEEE;
+
+  /* Colors – Semantic */
+  --text-on-dark:           rgba(255,255,255,0.85);
+  --text-on-dark-secondary: rgba(255,255,255,0.70);
+  --text-on-dark-muted:     rgba(255,255,255,0.50);
+  --text-on-dark-faint:     rgba(255,255,255,0.35);
+  --yellow-glass:           rgba(245,166,35,0.12);
+  --yellow-border:          rgba(245,166,35,0.20);
+  --yellow-glow:            rgba(245,166,35,0.08);
+
+  /* Gradients */
+  --gradient-hero:         linear-gradient(135deg,#1A1A1A 0%,#0d0d0d 100%);
+  --gradient-dark-section: linear-gradient(135deg,#1A1A1A 0%,#0d0d0d 50%,#2D2D2D 100%);
+
+  /* Typography */
+  --font-display: 'Barlow Condensed','Arial Narrow',sans-serif;
+  --font-body:    'DM Sans','Segoe UI',system-ui,sans-serif;
+
+  --text-hero:       clamp(2rem,4.5vw,3.2rem);
+  --text-section:    clamp(1.75rem,4vw,2.5rem);
+  --text-impact:     clamp(1.3rem,3vw,1.8rem);
+  --text-card-title: 17px;
+  --text-metric:     clamp(1.5rem,3vw,2.2rem);
+  --text-metric-lg:  clamp(2.5rem,5vw,3.5rem);
+
+  --lh-headline: 1.10;
+  --lh-impact:   1.15;
+  --lh-body:     1.55;
+  --lh-body-lg:  1.60;
+  --ls-headline: -0.02em;
+  --ls-badge:     0.05em;
+
+  /* Spacing */
+  --space-wrap-max: 1160px;
+
+  /* Borders */
+  --radius-sm:     4px;
+  --radius-card:   12px;
+  --radius-button: 8px;
+  --radius-input:  8px;
+  --radius-badge:  100px;
+  --radius-circle: 50%;
+  --radius-lg:     16px;
+
+  /* Shadows */
+  --shadow-card:            0 2px 8px rgba(0,0,0,0.06);
+  --shadow-card-hover:      0 12px 32px rgba(0,0,0,0.12);
+  --shadow-card-dark:       0 2px 8px rgba(0,0,0,0.20);
+  --shadow-card-dark-hover: 0 12px 32px rgba(0,0,0,0.40);
+  --shadow-table:           0 4px 20px rgba(0,0,0,0.08);
+  --shadow-button:          0 4px 16px rgba(245,166,35,0.30);
+
+  /* Motion */
+  --dur-fast:   0.25s;
+  --dur-normal: 0.30s;
+  --dur-slow:   0.40s;
+  --dur-enter:  0.70s;
+}
+
+/* ─────────────────────────────────────────────
+   RESET + BASE
+───────────────────────────────────────────── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--brand-black); font-family:var(--font-body); color:var(--neutral-white); -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+input,select,button { font-family:inherit; outline:none; }
+input::placeholder { color:rgba(255,255,255,0.45); }
+select option { background:var(--brand-black); color:#fff; }
+::selection { background:var(--brand-yellow); color:var(--brand-black); }
+img { display:block; max-width:100%; }
+
+/* ─────────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to   { opacity:1; }
+}
+.animate-fade-up {
+  opacity:0;
+  animation:fadeUp var(--dur-enter) ease forwards;
+}
+
+/* ─────────────────────────────────────────────
+   SHARED LAYOUT
+───────────────────────────────────────────── */
+.wrap {
+  max-width:var(--space-wrap-max);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* ─────────────────────────────────────────────
+   CTA BUTTON
+───────────────────────────────────────────── */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:16px 36px;
+  font-family:var(--font-display);
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:var(--ls-badge);
+  text-transform:uppercase;
+  border-radius:var(--radius-button);
+  border:2px solid transparent;
+  cursor:pointer;
+  min-height:48px;
+  transition:background var(--dur-fast) ease,
+             color var(--dur-fast) ease,
+             border-color var(--dur-fast) ease,
+             transform 0.1s ease,
+             box-shadow var(--dur-fast) ease;
+  white-space:nowrap;
+}
+.btn:active { transform:scale(0.98); }
+.btn:focus-visible { outline:2px solid var(--brand-yellow); outline-offset:3px; }
+
+.btn-primary {
+  background:var(--brand-yellow);
+  color:var(--brand-black);
+  border-color:var(--brand-yellow);
+  box-shadow:var(--shadow-button);
+}
+.btn-primary:hover {
+  background:var(--brand-yellow-hover);
+  border-color:var(--brand-yellow-hover);
+}
+
+.btn-secondary {
+  background:transparent;
+  color:var(--brand-yellow);
+  border-color:var(--brand-yellow);
+}
+.btn-secondary:hover {
+  background:var(--brand-yellow);
+  color:var(--brand-black);
+}
+
+.btn-inverted {
+  background:var(--brand-black);
+  color:var(--brand-yellow);
+  border-color:var(--brand-black);
+}
+.btn-inverted:hover {
+  background:#111;
+}
+
+.btn-sm {
+  padding:10px 22px;
+  font-size:13px;
+  min-height:38px;
+}
+
+.btn-full { width:100%; }
+
+/* ─────────────────────────────────────────────
+   CARD
+───────────────────────────────────────────── */
+.card {
+  border-radius:var(--radius-card);
+  padding:28px 24px;
+  border-left:4px solid transparent;
+  transition:box-shadow var(--dur-normal) ease,
+             transform var(--dur-normal) ease,
+             border-color var(--dur-normal) ease;
+  position:relative;
+}
+.card:hover {
+  transform:translateY(-4px);
+  border-left-color:var(--brand-yellow);
+}
+.card-light {
+  background:var(--neutral-white);
+  border:1px solid var(--neutral-border);
+  border-left:4px solid transparent;
+  box-shadow:var(--shadow-card);
+}
+.card-light:hover { box-shadow:var(--shadow-card-hover); border-left-color:var(--brand-yellow); }
+.card-dark {
+  background:var(--brand-dark-gray);
+  border:1px solid rgba(245,166,35,0.15);
+  border-left:4px solid transparent;
+  box-shadow:var(--shadow-card-dark);
+}
+.card-dark:hover { box-shadow:var(--shadow-card-dark-hover); border-left-color:var(--brand-yellow); }
+
+.card-icon { font-size:28px; margin-bottom:12px; line-height:1; }
+.card-title {
+  font-family:var(--font-display);
+  font-size:var(--text-card-title);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:-0.01em;
+  margin-bottom:8px;
+}
+.card-light .card-title { color:var(--brand-black); }
+.card-dark .card-title  { color:var(--brand-yellow); }
+.card-desc {
+  font-size:14px;
+  font-weight:500;
+  line-height:1.55;
+}
+.card-light .card-desc { color:var(--neutral-med); }
+.card-dark .card-desc  { color:var(--text-on-dark-secondary); }
+
+/* ─────────────────────────────────────────────
+   SECTION TITLE
+───────────────────────────────────────────── */
+.section-title-block { margin-bottom:32px; }
+.section-title-block.center { text-align:center; }
+.section-title-block.center .section-subtitle { margin:0 auto; }
+
+.section-heading {
+  font-family:var(--font-display);
+  font-size:var(--text-section);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:var(--ls-headline);
+  line-height:var(--lh-impact);
+  margin-bottom:12px;
+}
+.section-heading.dark { color:var(--brand-black); }
+.section-heading.light { color:var(--neutral-white); }
+
+.section-subtitle {
+  font-size:16px;
+  line-height:1.55;
+  max-width:680px;
+}
+.section-subtitle.dark { color:var(--neutral-med); }
+.section-subtitle.light { color:var(--text-on-dark-secondary); }
+
+/* ─────────────────────────────────────────────
+   METRIC BADGE
+───────────────────────────────────────────── */
+.metric-badge {
+  padding:16px 12px;
+  text-align:center;
+  flex:1;
+}
+.metric-value {
+  font-family:var(--font-display);
+  font-weight:900;
+  color:var(--brand-yellow);
+  line-height:1;
+}
+.metric-value.normal { font-size:var(--text-metric); }
+.metric-value.lg     { font-size:var(--text-metric-lg); }
+.metric-label {
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+  margin-top:4px;
+}
+.metric-label.dark  { color:var(--text-on-dark-muted); }
+.metric-label.light { color:var(--neutral-med); }
+
+/* ─────────────────────────────────────────────
+   FAQ ITEM
+───────────────────────────────────────────── */
+.faq-item {
+  border-bottom:1px solid #e5e5e5;
+  padding:20px 0;
+}
+.faq-trigger {
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:0;
+  text-align:left;
+}
+.faq-question {
+  font-size:16px;
+  font-weight:700;
+  color:var(--brand-black);
+  line-height:1.4;
+}
+.faq-icon {
+  font-size:22px;
+  font-weight:700;
+  color:var(--brand-yellow);
+  transition:transform var(--dur-slow) ease;
+  flex-shrink:0;
+  user-select:none;
+  line-height:1;
+}
+.faq-icon.open { transform:rotate(45deg); }
+.faq-answer {
+  overflow:hidden;
+  max-height:0;
+  transition:max-height var(--dur-slow) ease, padding-top var(--dur-slow) ease;
+}
+.faq-answer.open {
+  max-height:300px;
+  padding-top:12px;
+}
+.faq-answer p {
+  font-size:15px;
+  color:var(--neutral-med);
+  line-height:1.6;
+  padding-right:40px;
+}
+
+/* ─────────────────────────────────────────────
+   TRUST BAR
+───────────────────────────────────────────── */
+.trust-bar {
+  background:#111111;
+  border-top:2px solid rgba(245,166,35,0.3);
+  border-bottom:2px solid rgba(245,166,35,0.3);
+  padding:20px 24px;
+}
+.trust-bar-inner {
+  max-width:var(--space-wrap-max);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.trust-item {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:1;
+  min-width:130px;
+}
+.trust-value {
+  font-family:var(--font-display);
+  font-size:18px;
+  font-weight:900;
+  color:var(--brand-yellow);
+  line-height:1;
+  white-space:nowrap;
+}
+.trust-label {
+  font-size:11px;
+  color:var(--text-on-dark-muted);
+  line-height:1.3;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.trust-divider {
+  width:1px;
+  height:32px;
+  background:rgba(255,255,255,0.12);
+}
+
+/* ─────────────────────────────────────────────
+   PROCESS STEP
+───────────────────────────────────────────── */
+.process-step { text-align:center; }
+.step-circle {
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:var(--brand-black);
+  border:2px solid var(--brand-black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 12px;
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:900;
+  color:var(--brand-yellow);
+}
+.step-title {
+  font-family:var(--font-display);
+  font-size:16px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--brand-black);
+  margin-bottom:4px;
+}
+.step-desc {
+  font-size:13px;
+  color:rgba(0,0,0,0.55);
+  line-height:1.5;
+}
+
+/* ─────────────────────────────────────────────
+   COMPARISON TABLE
+───────────────────────────────────────────── */
+.comp-table {
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  box-shadow:var(--shadow-table);
+  border:1px solid var(--neutral-border);
+}
+.comp-header {
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  background:var(--brand-black);
+  color:var(--neutral-white);
+}
+.comp-header-cell {
+  padding:16px 20px;
+  font-family:var(--font-display);
+  font-size:14px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.comp-header-cell.highlight { color:var(--brand-yellow); }
+.comp-row {
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  border-bottom:1px solid var(--neutral-border);
+}
+.comp-row:last-child { border-bottom:none; }
+.comp-row:nth-child(even) { background:var(--brand-yellow-muted); }
+.comp-row:nth-child(odd)  { background:var(--neutral-white); }
+.comp-cell {
+  padding:14px 20px;
+  font-size:14px;
+  color:var(--neutral-med);
+  line-height:1.4;
+  display:flex;
+  align-items:center;
+}
+.comp-cell.criteria {
+  font-weight:600;
+  color:var(--brand-black);
+}
+.comp-cell.highlight {
+  font-weight:700;
+  color:var(--brand-black);
+}
+
+/* ─────────────────────────────────────────────
+   CHECK BULLET
+───────────────────────────────────────────── */
+.check-bullet {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.check-circle {
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:var(--brand-yellow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:700;
+  color:var(--brand-black);
+  flex-shrink:0;
+}
+.check-text {
+  font-size:15px;
+  font-weight:500;
+  color:var(--text-on-dark);
+}
+
+/* ─────────────────────────────────────────────
+   FORM STYLES
+───────────────────────────────────────────── */
+.form-label {
+  display:block;
+  font-size:11px;
+  color:var(--text-on-dark-muted);
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  margin-bottom:5px;
+}
+.form-input {
+  width:100%;
+  padding:13px 16px;
+  font-size:15px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:var(--radius-input);
+  color:#fff;
+  transition:border-color var(--dur-fast) ease;
+}
+.form-input:focus { border-color:var(--brand-yellow); }
+
+/* ─────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────── */
+.navbar {
+  position:absolute;
+  top:0; left:0; right:0;
+  z-index:10;
+}
+.navbar-inner {
+  max-width:var(--space-wrap-max);
+  margin:0 auto;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo {
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:900;
+  color:var(--neutral-white);
+  text-transform:uppercase;
+  letter-spacing:-0.01em;
+}
+.logo span { color:var(--brand-yellow); }
+
+/* ─────────────────────────────────────────────
+   HERO SECTION
+───────────────────────────────────────────── */
+.hero {
+  background:var(--gradient-hero);
+  min-height:100vh;
+  padding:130px 24px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-deco {
+  position:absolute;
+  border-radius:50%;
+  border:2px solid var(--yellow-glow);
+  pointer-events:none;
+}
+.hero-grid {
+  max-width:var(--space-wrap-max);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:56px;
+  align-items:center;
+}
+.hero-badge {
+  display:inline-flex;
+  align-items:center;
+  background:var(--yellow-glass);
+  border:1px solid var(--yellow-border);
+  border-radius:var(--radius-badge);
+  padding:5px 14px;
+  margin-bottom:20px;
+}
+.hero-badge span {
+  font-family:var(--font-display);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--brand-yellow);
+}
+.hero-h1 {
+  font-family:var(--font-display);
+  font-size:var(--text-hero);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:var(--ls-headline);
+  line-height:var(--lh-headline);
+  color:var(--neutral-white);
+  margin-bottom:18px;
+}
+.hero-h1 span { color:var(--brand-yellow); }
+.hero-p {
+  font-size:17px;
+  color:var(--text-on-dark-secondary);
+  line-height:var(--lh-body-lg);
+  margin-bottom:28px;
+  max-width:500px;
+}
+.hero-bullets {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:32px;
+}
+.form-card {
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--yellow-border);
+  border-radius:var(--radius-lg);
+  padding:28px;
+}
+.form-card h2 {
+  font-family:var(--font-display);
+  font-size:20px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--neutral-white);
+  letter-spacing:-0.01em;
+  margin-bottom:6px;
+}
+.form-card p.sub {
+  font-size:12px;
+  color:var(--text-on-dark-muted);
+  margin-bottom:18px;
+}
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.form-stack { display:flex; flex-direction:column; gap:12px; }
+.form-disclaimer {
+  font-size:11px;
+  color:var(--text-on-dark-faint);
+  text-align:center;
+  margin-top:4px;
+}
+.submitted-msg { text-align:center; padding:24px 0; }
+.submitted-msg .emoji { font-size:44px; margin-bottom:14px; }
+.submitted-msg h3 {
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--brand-yellow);
+  margin-bottom:10px;
+}
+.submitted-msg p {
+  font-size:15px;
+  color:var(--text-on-dark-secondary);
+  line-height:1.6;
+}
+
+/* ─────────────────────────────────────────────
+   SECTIONS — GENERIC
+───────────────────────────────────────────── */
+.section { padding:80px 24px; }
+.section-light { background:var(--neutral-white); }
+.section-neutral { background:var(--neutral-light); }
+.section-dark { background:var(--gradient-dark-section); }
+.section-yellow { background:var(--brand-yellow); }
+
+/* ─────────────────────────────────────────────
+   AUTHORITY
+───────────────────────────────────────────── */
+.authority-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  align-items:center;
+}
+.metrics-row { display:flex; }
+.authority-body p {
+  font-size:16px;
+  color:var(--neutral-med);
+  line-height:1.6;
+  margin-bottom:14px;
+}
+.authority-body p:last-child { margin-bottom:0; }
+
+/* ─────────────────────────────────────────────
+   STATS GRID
+───────────────────────────────────────────── */
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.stat-card {
+  background:var(--neutral-white);
+  border-radius:var(--radius-card);
+  padding:24px 16px;
+  text-align:center;
+  box-shadow:var(--shadow-card);
+}
+.stat-value {
+  font-family:var(--font-display);
+  font-size:var(--text-metric);
+  font-weight:900;
+  color:var(--brand-yellow);
+  line-height:1;
+}
+.stat-label {
+  font-size:13px;
+  color:var(--neutral-med);
+  margin-top:6px;
+}
+
+/* ─────────────────────────────────────────────
+   POSITIONING SECTION
+───────────────────────────────────────────── */
+.positioning-title {
+  font-family:var(--font-display);
+  font-size:var(--text-section);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:var(--ls-headline);
+  color:var(--neutral-white);
+  line-height:var(--lh-impact);
+  margin-bottom:20px;
+}
+.positioning-title span { color:var(--brand-yellow); }
+
+/* ─────────────────────────────────────────────
+   MODELS SECTION
+───────────────────────────────────────────── */
+.models-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.model-card {
+  background:var(--brand-dark-gray);
+  border-radius:var(--radius-card);
+  border:1px solid rgba(245,166,35,0.2);
+  padding:28px;
+}
+.model-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+.model-name {
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:900;
+  text-transform:uppercase;
+  color:var(--neutral-white);
+}
+.model-badge {
+  font-family:var(--font-display);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  background:var(--brand-yellow);
+  color:var(--brand-black);
+  padding:3px 10px;
+  border-radius:var(--radius-badge);
+}
+.model-price {
+  font-family:var(--font-display);
+  font-size:var(--text-metric);
+  font-weight:900;
+  color:var(--brand-yellow);
+  margin-bottom:10px;
+}
+.model-desc {
+  font-size:14px;
+  color:var(--text-on-dark-secondary);
+  line-height:1.6;
+  margin-bottom:18px;
+}
+.model-features {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:22px;
+}
+.model-feature {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.model-feature-dot {
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  background:var(--brand-yellow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-weight:700;
+  color:var(--brand-black);
+  flex-shrink:0;
+}
+.model-feature span {
+  font-size:14px;
+  color:var(--text-on-dark);
+}
+
+/* ─────────────────────────────────────────────
+   INVESTMENT SECTION
+───────────────────────────────────────────── */
+.investment-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:center;
+}
+.invest-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:13px 0;
+  border-bottom:1px solid var(--neutral-border);
+}
+.invest-label { font-size:15px; color:var(--neutral-med); }
+.invest-value {
+  font-family:var(--font-display);
+  font-size:16px;
+  font-weight:700;
+  color:var(--brand-black);
+}
+.invest-divider {
+  height:1px;
+  background:var(--neutral-border);
+  margin:20px 0;
+}
+.invest-metrics {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+/* ─────────────────────────────────────────────
+   PROCESS SECTION
+───────────────────────────────────────────── */
+.process-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+
+/* ─────────────────────────────────────────────
+   FINAL CTA SECTION
+───────────────────────────────────────────── */
+.final-cta {
+  background:var(--gradient-hero);
+  padding:80px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.final-cta-deco {
+  position:absolute;
+  bottom:-100px;
+  left:50%;
+  transform:translateX(-50%);
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  border:2px solid var(--yellow-glow);
+  pointer-events:none;
+}
+.final-cta h2 {
+  font-family:var(--font-display);
+  font-size:var(--text-section);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:var(--ls-headline);
+  line-height:var(--lh-impact);
+  color:var(--neutral-white);
+  margin-bottom:14px;
+}
+.final-cta h2 span { color:var(--brand-yellow); }
+.final-cta p {
+  font-size:17px;
+  color:var(--text-on-dark-secondary);
+  line-height:1.6;
+  margin:0 auto 28px;
+  max-width:560px;
+}
+.final-cta-btns {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+.footer {
+  background:#111111;
+  border-top:3px solid var(--brand-yellow);
+  padding:36px 24px;
+}
+.footer-inner {
+  max-width:var(--space-wrap-max);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+}
+.footer-logo {
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:900;
+  color:var(--neutral-white);
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.footer-logo span { color:var(--brand-yellow); }
+.footer-sub { font-size:12px; color:var(--text-on-dark-muted); }
+.footer-link { color:var(--brand-yellow); font-size:13px; }
+.footer-copy { font-size:11px; color:var(--text-on-dark-faint); }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width:900px) {
+  .hero-grid          { grid-template-columns:1fr; }
+  .authority-grid     { grid-template-columns:1fr; }
+  .stats-grid         { grid-template-columns:repeat(2,1fr); }
+  .models-grid        { grid-template-columns:1fr; }
+  .investment-grid    { grid-template-columns:1fr; }
+  .process-grid       { grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width:600px) {
+  .stats-grid  { grid-template-columns:1fr 1fr; }
+  .process-grid{ grid-template-columns:repeat(2,1fr); }
+  .comp-header,
+  .comp-row    { grid-template-columns:1fr 1fr; }
+  .comp-header-cell:first-child,
+  .comp-cell.criteria { display:none; }
+  .trust-bar-inner { justify-content:center; }
+  .trust-divider   { display:none; }
+  .form-grid       { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useRef } = React;
+
+/* ──────────────────────────────────────────
+   COMPONENT LIBRARY
+────────────────────────────────────────── */
+
+function CTAButton({ variant = 'primary', size = 'md', fullWidth, onClick, type = 'button', children }) {
+  const cls = [
+    'btn',
+    `btn-${variant}`,
+    size === 'sm' ? 'btn-sm' : '',
+    fullWidth ? 'btn-full' : '',
+  ].filter(Boolean).join(' ');
+  return (
+    <button className={cls} onClick={onClick} type={type}>
+      {children}
+    </button>
+  );
+}
+
+function Card({ icon, title, description, variant = 'light' }) {
+  return (
+    <div className={`card card-${variant}`}>
+      <div className="card-icon">{icon}</div>
+      <div className="card-title">{title}</div>
+      <div className="card-desc">{description}</div>
+    </div>
+  );
+}
+
+function MetricBadge({ value, label, theme = 'dark', size = 'normal' }) {
+  return (
+    <div className="metric-badge">
+      <div className={`metric-value ${size}`}>{value}</div>
+      <div className={`metric-label ${theme}`}>{label}</div>
+    </div>
+  );
+}
+
+function FAQItem({ question, answer }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="faq-item">
+      <button className="faq-trigger" onClick={() => setOpen(!open)} aria-expanded={open}>
+        <span className="faq-question">{question}</span>
+        <span className={`faq-icon${open ? ' open' : ''}`}>+</span>
+      </button>
+      <div className={`faq-answer${open ? ' open' : ''}`}>
+        <p>{answer}</p>
+      </div>
+    </div>
+  );
+}
+
+function SectionTitle({ children, subtitle, variant = 'default', align = 'left' }) {
+  const colorClass = variant === 'light' ? 'light' : 'dark';
+  return (
+    <div className={`section-title-block ${align}`}>
+      <h2 className={`section-heading ${colorClass}`}>{children}</h2>
+      {subtitle && <p className={`section-subtitle ${colorClass}`}>{subtitle}</p>}
+    </div>
+  );
+}
+
+function TrustBar({ items }) {
+  return (
+    <div className="trust-bar">
+      <div className="trust-bar-inner">
+        {items.map((item, i) => (
+          <React.Fragment key={i}>
+            {i > 0 && <div className="trust-divider" />}
+            <div className="trust-item">
+              <div>
+                <div className="trust-value">{item.value}</div>
+                <div className="trust-label">{item.label}</div>
+              </div>
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProcessStep({ number, title, description }) {
+  return (
+    <div className="process-step">
+      <div className="step-circle">{number}</div>
+      <div className="step-title">{title}</div>
+      <div className="step-desc">{description}</div>
+    </div>
+  );
+}
+
+function ComparisonTable({ rows }) {
+  return (
+    <div className="comp-table">
+      <div className="comp-header">
+        <div className="comp-header-cell">Critério</div>
+        <div className="comp-header-cell">Franquias Tradicionais</div>
+        <div className="comp-header-cell highlight">CheckFast</div>
+      </div>
+      {rows.map((row, i) => (
+        <div className="comp-row" key={i}>
+          <div className="comp-cell criteria">{row.criteria}</div>
+          <div className="comp-cell">{row.competitor}</div>
+          <div className="comp-cell highlight">{row.checkfast}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Wrap({ children, style }) {
+  return <div className="wrap" style={style}>{children}</div>;
+}
+
+function CheckBullet({ text }) {
+  return (
+    <div className="check-bullet">
+      <div className="check-circle">✓</div>
+      <span className="check-text">{text}</span>
+    </div>
+  );
+}
+
+/* ──────────────────────────────────────────
+   SECTIONS
+────────────────────────────────────────── */
+
+function NavBar({ scrollToForm }) {
+  return (
+    <nav className="navbar">
+      <div className="navbar-inner">
+        <div className="logo">CHECK<span>FAST</span></div>
+        <CTAButton variant="secondary" size="sm" onClick={scrollToForm}>
+          QUERO SER FRANQUEADO
+        </CTAButton>
+      </div>
+    </nav>
+  );
+}
+
+function HeroSection({ formRef }) {
+  const [form, setForm] = useState({ nome:'', whatsapp:'', email:'', cidade:'', capital:'' });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const ch = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+  const submit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1000);
+  };
+
+  return (
+    <section className="hero">
+      <div className="hero-deco" style={{ top:'-120px', right:'-120px', width:'560px', height:'560px' }} />
+      <div className="hero-deco" style={{ top:'-60px', right:'-60px', width:'380px', height:'380px' }} />
+      <div className="hero-grid">
+        <div>
+          <div className="hero-badge">
+            <span>FRANQUIA DE VISTORIA VEICULAR</span>
+          </div>
+          <h1 className="hero-h1">
+            LUCRE COM A VISTORIA <span>MAIS EFICIENTE</span> DO BRASIL
+          </h1>
+          <p className="hero-p">
+            Modelo comprovado, zero royalties, suporte completo. A CheckFast abre portas para empreendedores de todos os perfis — sem precisar de experiência prévia.
+          </p>
+          <div className="hero-bullets">
+            <CheckBullet text="Sem royalties — 100% da receita é sua" />
+            <CheckBullet text="Treinamento completo de 40 horas incluído" />
+            <CheckBullet text="App e checklist digital exclusivos CheckFast" />
+          </div>
+          <CTAButton variant="primary" onClick={() => {
+            if (formRef.current) {
+              const top = formRef.current.getBoundingClientRect().top + window.scrollY - 20;
+              window.scrollTo({ top, behavior:'smooth' });
+            }
+          }}>
+            RECEBER APRESENTAÇÃO DA FRANQUIA
+          </CTAButton>
+        </div>
+
+        <div ref={formRef} className="form-card">
+          {submitted ? (
+            <div className="submitted-msg">
+              <div className="emoji">✅</div>
+              <h3>CADASTRO ENVIADO</h3>
+              <p>Nossa equipe entrará em contato pelo WhatsApp informado em até 24 horas.</p>
+            </div>
+          ) : (
+            <>
+              <h2>RECEBA A APRESENTAÇÃO</h2>
+              <p className="sub">Preencha os dados abaixo — sem compromisso.</p>
+              <form onSubmit={submit} className="form-stack">
+                <div>
+                  <label className="form-label">Nome completo</label>
+                  <input className="form-input" name="nome" value={form.nome} onChange={ch} placeholder="Seu nome" required />
+                </div>
+                <div>
+                  <label className="form-label">WhatsApp</label>
+                  <input className="form-input" name="whatsapp" value={form.whatsapp} onChange={ch} placeholder="(00) 00000-0000" required />
+                </div>
+                <div>
+                  <label className="form-label">E-mail</label>
+                  <input className="form-input" type="email" name="email" value={form.email} onChange={ch} placeholder="seu@email.com" required />
+                </div>
+                <div className="form-grid">
+                  <div>
+                    <label className="form-label">Cidade</label>
+                    <input className="form-input" name="cidade" value={form.cidade} onChange={ch} placeholder="Sua cidade" required />
+                  </div>
+                  <div>
+                    <label className="form-label">Capital disponível</label>
+                    <select className="form-input" name="capital" value={form.capital} onChange={ch} style={{cursor:'pointer'}} required>
+                      <option value="">Selecione</option>
+                      <option value="ate50">Até R$ 50mil</option>
+                      <option value="50-80">R$ 50–80mil</option>
+                      <option value="80-120">R$ 80–120mil</option>
+                      <option value="120+">Acima de R$ 120mil</option>
+                    </select>
+                  </div>
+                </div>
+                <CTAButton variant="primary" fullWidth type="submit">
+                  {loading ? 'ENVIANDO...' : 'RECEBER APRESENTAÇÃO'}
+                </CTAButton>
+                <p className="form-disclaimer">Sem compromisso. Dados não compartilhados.</p>
+              </form>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AuthoritySection() {
+  return (
+    <section className="section section-light">
+      <Wrap>
+        <div className="authority-grid">
+          <div>
+            <SectionTitle subtitle="Nascida em Belo Horizonte, a CheckFast é referência em vistoria veicular digital no Brasil — com tecnologia proprietária e metodologia testada em operações diárias.">
+              POR QUE A <span style={{color:'var(--brand-yellow)'}}>CHECKFAST?</span>
+            </SectionTitle>
+            <div className="metrics-row">
+              <MetricBadge value="2018" label="Fundação" theme="light" />
+              <MetricBadge value="50+" label="Franqueados" theme="light" />
+              <MetricBadge value="15min" label="Por vistoria" theme="light" />
+            </div>
+          </div>
+          <div className="authority-body">
+            <p>A vistoria veicular é exigência legal para toda transferência de veículo. Isso garante demanda constante e previsível — independente do cenário econômico.</p>
+            <p>Com o app CheckFast, o processo é 100% digital: checklist automatizado, laudo em 15 minutos e entrega imediata ao cliente.</p>
+          </div>
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function MarketSection() {
+  const stats = [
+    { v:'4mi+',  l:'Vistorias/ano no Brasil' },
+    { v:'95%',   l:'Ainda feitas manualmente' },
+    { v:'R$ 4bi',l:'Volume anual do mercado'  },
+    { v:'12%',   l:'Crescimento ano a ano'    },
+  ];
+  return (
+    <section className="section section-neutral">
+      <Wrap>
+        <SectionTitle align="center" subtitle="O mercado de vistorias veiculares movimenta bilhões por ano — e a digitalização ainda está no início.">
+          MERCADO DE <span style={{color:'var(--brand-yellow)'}}>R$ 4 BILHÕES</span>
+        </SectionTitle>
+        <div className="stats-grid">
+          {stats.map((s,i) => (
+            <div key={i} className="stat-card">
+              <div className="stat-value">{s.v}</div>
+              <div className="stat-label">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function PositioningSection() {
+  return (
+    <section className="section section-dark" style={{textAlign:'center', position:'relative', overflow:'hidden'}}>
+      <Wrap>
+        <p className="positioning-title">
+          A ÚNICA FRANQUIA AUTOMOTIVA <span>COM ZERO ROYALTIES</span>
+        </p>
+        <p style={{fontSize:'17px', color:'var(--text-on-dark-secondary)', lineHeight:1.6, marginBottom:'28px', maxWidth:'680px', margin:'0 auto 28px'}}>
+          Enquanto outras franquias cobram 5% a 10% do faturamento todo mês, na CheckFast o que você fatura, você fica.
+        </p>
+        <CTAButton variant="primary">CONHECER O MODELO</CTAButton>
+      </Wrap>
+    </section>
+  );
+}
+
+function ServicesSection() {
+  const svs = [
+    { icon:'🚗', t:'Vistoria de Transferência', d:'Exigida legalmente para toda troca de proprietário. Demanda garantida e constante.' },
+    { icon:'🔍', t:'Vistoria Cautelar',          d:'Inspeção prévia à compra. Protege o comprador e agrega valor ao vendedor.' },
+    { icon:'🔧', t:'Revisão de Acessórios',       d:'Checkup de itens instalados: som, alarme, vidros, blindagem.' },
+    { icon:'📄', t:'Laudo Digital Imediato',       d:'Emitido pelo app em 15 minutos. PDF com QR code de validação.' },
+  ];
+  return (
+    <section className="section section-light">
+      <Wrap>
+        <SectionTitle subtitle="Diversifique a receita com múltiplos tipos de vistoria — todos no mesmo app.">
+          SERVIÇOS <span style={{color:'var(--brand-yellow)'}}>CHECKFAST</span>
+        </SectionTitle>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))', gap:'20px'}}>
+          {svs.map((s,i) => <Card key={i} icon={s.icon} title={s.t} description={s.d} variant="light" />)}
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function DifferentialsSection() {
+  const difs = [
+    { icon:'💰', t:'Zero Royalties',      d:'Modelo de licenciamento — nenhuma taxa mensal sobre o faturamento.' },
+    { icon:'📱', t:'App Exclusivo',         d:'Plataforma proprietária com checklist digital, laudos automáticos e painel de gestão.' },
+    { icon:'🎓', t:'Treinamento Completo',  d:'40 horas de formação inicial + capacitação contínua da equipe CheckFast.' },
+    { icon:'🏠', t:'Operação Flexível',     d:'Home Based ou Store in Store. Você define o modelo que melhor se encaixa.' },
+  ];
+  return (
+    <section className="section section-dark">
+      <Wrap>
+        <SectionTitle variant="light" subtitle="O que torna a CheckFast diferente de qualquer outra franquia do setor automotivo.">
+          NOSSOS <span style={{color:'var(--brand-yellow)'}}>DIFERENCIAIS</span>
+        </SectionTitle>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))', gap:'20px'}}>
+          {difs.map((d,i) => <Card key={i} icon={d.icon} title={d.t} description={d.d} variant="dark" />)}
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function ComparisonSection() {
+  const rows = [
+    { criteria:'Investimento inicial',   competitor:'R$ 150mil–R$ 400mil',      checkfast:'A partir de R$ 57mil' },
+    { criteria:'Royalties mensais',      competitor:'5%–10% do faturamento',    checkfast:'Sem royalties' },
+    { criteria:'Taxa de publicidade',    competitor:'2%–3%',                    checkfast:'Sem taxas fixas' },
+    { criteria:'Retorno estimado',       competitor:'36–60 meses',              checkfast:'18–24 meses' },
+    { criteria:'Modelo de operação',     competitor:'Ponto fixo obrigatório',   checkfast:'Home Based ou Store in Store' },
+    { criteria:'Suporte pós-abertura',   competitor:'Básico inicial',           checkfast:'Contínuo + 360°' },
+  ];
+  return (
+    <section className="section section-neutral">
+      <Wrap>
+        <SectionTitle align="center" subtitle="Veja por que a CheckFast oferece a melhor relação custo-benefício entre as franquias automotivas.">
+          CHECKFAST VS <span style={{color:'var(--brand-yellow)'}}>FRANQUIAS TRADICIONAIS</span>
+        </SectionTitle>
+        <ComparisonTable rows={rows} />
+      </Wrap>
+    </section>
+  );
+}
+
+function SupportSection() {
+  const items = [
+    { icon:'👥', t:'Suporte de Campo',        d:'Equipe regional disponível para visitas e acompanhamento da operação.' },
+    { icon:'📡', t:'Plataforma Online',        d:'Painel de gestão, relatórios e laudos disponíveis em tempo real.' },
+    { icon:'📞', t:'Central de Atendimento',   d:'Canais dedicados para franqueados: WhatsApp, e-mail e telefone.' },
+  ];
+  return (
+    <section className="section section-light">
+      <Wrap>
+        <SectionTitle subtitle="Você nunca opera sozinho. Suporte completo em todas as fases.">
+          SUPORTE <span style={{color:'var(--brand-yellow)'}}>360°</span>
+        </SectionTitle>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:'20px'}}>
+          {items.map((s,i) => <Card key={i} icon={s.icon} title={s.t} description={s.d} variant="light" />)}
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function ModelsSection() {
+  const models = [
+    {
+      name:'HOME BASED', badge:'MAIS POPULAR', price:'A partir de R$ 57mil',
+      desc:'Atenda sem ponto fixo. Vá até o cliente ou receba em endereço parceiro. Mínima estrutura, máxima flexibilidade.',
+      features:['Sem aluguel de espaço','Operação solo ou com 1 assistente','Ideal para início rápido','Retorno em 18–24 meses'],
+    },
+    {
+      name:'STORE IN STORE', badge:'PARA EXPANSÃO', price:'A partir de R$ 80mil',
+      desc:'Instale um ponto de vistoria dentro de loja, despachante ou oficina parceira. Volume maior, presença local consolidada.',
+      features:['Visibilidade de ponto físico','Maior volume de vistorias','Co-marketing com parceiro','Ticket médio mais alto'],
+    },
+  ];
+  return (
+    <section className="section section-dark">
+      <Wrap>
+        <SectionTitle variant="light" align="center" subtitle="Dois modelos para diferentes perfis e momentos de investimento.">
+          MODELOS DE <span style={{color:'var(--brand-yellow)'}}>FRANQUIA</span>
+        </SectionTitle>
+        <div className="models-grid">
+          {models.map((m,i) => (
+            <div key={i} className="model-card">
+              <div className="model-header">
+                <span className="model-name">{m.name}</span>
+                <span className="model-badge">{m.badge}</span>
+              </div>
+              <div className="model-price">{m.price}</div>
+              <p className="model-desc">{m.desc}</p>
+              <div className="model-features">
+                {m.features.map((f,j) => (
+                  <div key={j} className="model-feature">
+                    <div className="model-feature-dot">✓</div>
+                    <span>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <CTAButton variant="secondary" fullWidth>SAIBA MAIS</CTAButton>
+            </div>
+          ))}
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function InvestmentSection() {
+  const items = [
+    ['Taxa de franquia',      'R$ 35.000'],
+    ['Kit de equipamentos',   'R$ 12.000'],
+    ['Treinamento inicial',   'Incluso'  ],
+    ['Capital de giro (rec.)','R$ 10.000'],
+  ];
+  return (
+    <section className="section section-light">
+      <Wrap>
+        <div className="investment-grid">
+          <div>
+            <SectionTitle subtitle="Transparência total: veja o que está incluso e o que esperar de retorno.">
+              INVESTIMENTO <span style={{color:'var(--brand-yellow)'}}>INICIAL</span>
+            </SectionTitle>
+            {items.map(([label,val],i) => (
+              <div key={i} className="invest-row">
+                <span className="invest-label">{label}</span>
+                <span className="invest-value">{val}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{textAlign:'center'}}>
+            <MetricBadge value="R$ 57mil" label="Investimento total mínimo" theme="light" size="lg" />
+            <div className="invest-divider" />
+            <div className="invest-metrics">
+              <MetricBadge value="18–24" label="Meses para ROI" theme="light" />
+              <MetricBadge value="0%" label="Royalties" theme="light" />
+            </div>
+            <div style={{marginTop:'20px'}}>
+              <CTAButton variant="primary" fullWidth>RECEBER APRESENTAÇÃO COMPLETA</CTAButton>
+            </div>
+          </div>
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function ProcessSection() {
+  const steps = [
+    {n:1, t:'Solicite',     d:'Preencha o formulário.' },
+    {n:2, t:'Apresentação', d:'Reunião online.'         },
+    {n:3, t:'Análise',      d:'Perfil e cidade.'        },
+    {n:4, t:'Contrato',     d:'Assinatura + kit.'       },
+    {n:5, t:'Operação',     d:'Treinamento + início.'   },
+  ];
+  return (
+    <section className="section section-yellow">
+      <Wrap>
+        <SectionTitle align="center">
+          COMO <span style={{color:'var(--brand-black)'}}>ENTRAR</span>
+        </SectionTitle>
+        <div className="process-grid">
+          {steps.map(s => <ProcessStep key={s.n} number={s.n} title={s.t} description={s.d} />)}
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const faqs = [
+    { q:'Preciso ter experiência no setor automotivo?',    a:'Não. O modelo inclui treinamento completo de 40 horas. O mais importante é ter perfil empreendedor e disponibilidade.' },
+    { q:'Há royalties ou taxas mensais?',                  a:'Zero royalties. A CheckFast opera no modelo de licenciamento — você paga uma vez e fica com 100% do faturamento.' },
+    { q:'Qual o prazo de retorno do investimento?',        a:'Com operação plena, o ROI médio dos franqueados ativos é de 18 a 24 meses, variando conforme o volume mensal.' },
+    { q:'Posso atuar em qualquer cidade?',                 a:'Em qualquer cidade onde a CheckFast ainda não tenha exclusividade fechada. Nossa equipe verifica disponibilidade na sua região.' },
+    { q:'O que está incluso no investimento inicial?',     a:'Taxa de franquia, kit completo de equipamentos, treinamento de 40 horas e acesso vitalício à plataforma e atualizações.' },
+    { q:'Quanto tempo leva para iniciar a operação?',      a:'Em média 30 a 45 dias após a assinatura do contrato — treinamento, homologação do kit e registro junto ao DETRAN local.' },
+  ];
+  return (
+    <section className="section section-light">
+      <Wrap>
+        <SectionTitle align="center" subtitle="Respostas diretas para quem está avaliando a franquia CheckFast.">
+          DÚVIDAS <span style={{color:'var(--brand-yellow)'}}>FREQUENTES</span>
+        </SectionTitle>
+        <div style={{maxWidth:'720px', margin:'0 auto'}}>
+          {faqs.map((f,i) => <FAQItem key={i} question={f.q} answer={f.a} />)}
+        </div>
+      </Wrap>
+    </section>
+  );
+}
+
+function FinalCTASection({ scrollToForm }) {
+  return (
+    <section className="final-cta">
+      <div className="final-cta-deco" />
+      <div className="wrap" style={{position:'relative', zIndex:1}}>
+        <h2>PRONTO PARA <span>COMEÇAR?</span></h2>
+        <p>Preencha o formulário acima ou fale diretamente com nossa equipe. Conversa sem compromisso.</p>
+        <div className="final-cta-btns">
+          <CTAButton variant="primary" onClick={scrollToForm}>RECEBER APRESENTAÇÃO</CTAButton>
+          <CTAButton variant="secondary">FALAR NO WHATSAPP</CTAButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FooterSection() {
+  return (
+    <footer className="footer">
+      <div className="footer-inner">
+        <div>
+          <div className="footer-logo">CHECK<span>FAST</span></div>
+          <div className="footer-sub">Vistoria Veicular · Desde 2018 · Belo Horizonte, MG</div>
+        </div>
+        <a href="https://checkfastvistorias.com.br" className="footer-link">
+          checkfastvistorias.com.br
+        </a>
+        <div className="footer-copy">
+          © {new Date().getFullYear()} CheckFast Vistoria Veicular. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ──────────────────────────────────────────
+   APP
+────────────────────────────────────────── */
+function App() {
+  const formRef = useRef(null);
+  const scrollToForm = () => {
+    if (formRef.current) {
+      const top = formRef.current.getBoundingClientRect().top + window.scrollY - 20;
+      window.scrollTo({ top, behavior:'smooth' });
+    }
+  };
+
+  return (
+    <div>
+      <div style={{position:'relative'}}>
+        <NavBar scrollToForm={scrollToForm} />
+        <HeroSection formRef={formRef} />
+      </div>
+
+      <TrustBar items={[
+        { value:'Desde 2018',  label:'Franquia consolidada'   },
+        { value:'R$ 57mil',    label:'Investimento inicial'   },
+        { value:'Sem Royalties', label:'100% da receita é sua' },
+        { value:'Home Based',  label:'Ou Store in Store'      },
+        { value:'BH + Nacional', label:'Em expansão'          },
+      ]} />
+
+      <AuthoritySection />
+      <MarketSection />
+      <PositioningSection />
+      <ServicesSection />
+      <DifferentialsSection />
+      <ComparisonSection />
+      <SupportSection />
+      <ModelsSection />
+      <InvestmentSection />
+      <ProcessSection />
+      <FAQSection />
+      <FinalCTASection scrollToForm={scrollToForm} />
+      <FooterSection />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
