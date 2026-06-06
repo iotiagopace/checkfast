@@ -239,46 +239,34 @@ select option { background:var(--brand-black); color:#fff; }
   overflow:hidden;
   background-color:var(--brand-black);
 
-  /* Imagem à direita + gradiente preto sobre ela para legibilidade */
+  /* Imagem cobre o hero inteiro — overlay escuro uniforme + mais pesado à esquerda p/ leitura */
   background-image:
     linear-gradient(
       to right,
-      #0d0d0d 0%,
-      #0d0d0d 42%,
-      rgba(13,13,13,0.92) 54%,
-      rgba(13,13,13,0.55) 68%,
-      rgba(13,13,13,0.15) 82%,
-      rgba(13,13,13,0.0) 100%
+      rgba(10,10,10,0.88) 0%,
+      rgba(10,10,10,0.80) 35%,
+      rgba(10,10,10,0.55) 60%,
+      rgba(10,10,10,0.38) 100%
     ),
     url('assets/hero-bg.jpg');
   background-size:cover;
-  background-position:center right;
+  background-position:center center;
   background-repeat:no-repeat;
 }
-/* Animated glow orbs */
+/* Glow sutil no canto inferior esquerdo — complementa a foto */
 .hero-glow {
   position:absolute;
   border-radius:50%;
   pointer-events:none;
-  animation:pulse-glow 6s ease-in-out infinite;
+  animation:pulse-glow 7s ease-in-out infinite;
 }
 .hero-glow-1 {
   width:500px; height:500px;
-  bottom:-80px; left:-80px;
-  background:radial-gradient(ellipse at center, rgba(245,166,35,0.07) 0%, transparent 70%);
+  bottom:-120px; left:-80px;
+  background:radial-gradient(ellipse at center, rgba(245,166,35,0.08) 0%, transparent 65%);
 }
-.hero-glow-2 {
-  width:300px; height:300px;
-  top:20%; left:35%;
-  background:radial-gradient(ellipse at center, rgba(245,166,35,0.04) 0%, transparent 70%);
-  animation-delay:3s;
-}
-.hero-glow-3 {
-  width:200px; height:200px;
-  top:10%; left:5%;
-  background:radial-gradient(ellipse at center, rgba(245,166,35,0.05) 0%, transparent 70%);
-  animation-delay:5s;
-}
+.hero-glow-2 { display:none; }
+.hero-glow-3 { display:none; }
 .hero-grid {
   max-width:1160px;
   margin:0 auto;
@@ -345,13 +333,13 @@ select option { background:var(--brand-black); color:#fff; }
 
 /* Form card */
 .form-card {
-  background:rgba(255,255,255,0.035);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--yellow-border);
+  background:rgba(12,12,12,0.75);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(245,166,35,0.28);
   border-radius:var(--radius-lg);
   padding:30px;
-  box-shadow:0 8px 40px rgba(0,0,0,0.3);
+  box-shadow:0 12px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 .form-card h2 {
   font-family:var(--font-display);
@@ -764,27 +752,24 @@ select option { background:var(--brand-black); color:#fff; }
   .investment-grid { grid-template-columns:1fr; }
   .process-grid    { grid-template-columns:repeat(3,1fr); }
   .process-grid::before { display:none; }
-  /* Em telas menores, gradiente cobre mais para legibilidade total */
+  /* Tablet: overlay um pouco mais denso para texto em coluna única */
   .hero {
     background-image:
       linear-gradient(
-        to right,
-        #0d0d0d 0%,
-        #0d0d0d 55%,
-        rgba(13,13,13,0.9) 70%,
-        rgba(13,13,13,0.5) 100%
+        rgba(10,10,10,0.82),
+        rgba(10,10,10,0.82)
       ),
       url('assets/hero-bg.jpg');
-    background-position:center right 20%;
+    background-position:center center;
   }
 }
 @media (max-width:640px) {
   .hero {
     padding:100px 20px 60px;
     background-image:
-      linear-gradient(to bottom, rgba(13,13,13,0.7) 0%, #0d0d0d 60%),
+      linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.85)),
       url('assets/hero-bg.jpg');
-    background-position:center top;
+    background-position:center center;
   }
   .navbar-inner { padding:14px 20px; }
   .stats-grid  { grid-template-columns:1fr 1fr; }
