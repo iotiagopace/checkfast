@@ -406,10 +406,12 @@ select option { background:var(--brand-black); color:#fff; }
    HERO
 ══════════════════════════════════════════════ */
 .hero {
-  min-height:100vh;
-  padding:120px 24px 80px;
+  min-height:min(820px, 92svh);
+  padding:104px 24px 58px;
   position:relative;
   overflow:hidden;
+  display:flex;
+  align-items:center;
   background-color:var(--brand-black);
 
   /* Imagem cobre o hero inteiro — overlay escuro uniforme + mais pesado à esquerda p/ leitura */
@@ -464,11 +466,11 @@ select option { background:var(--brand-black); color:#fff; }
 .hero-p {
   font-size:17px;
   color:var(--text-on-dark-secondary);
-  line-height:var(--lh-body-lg);
-  margin-bottom:28px;
+  line-height:1.55;
+  margin-bottom:24px;
   max-width:500px;
 }
-.hero-bullets { display:flex; flex-direction:column; gap:12px; margin-bottom:36px; }
+.hero-bullets { display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
 .check-bullet { display:flex; align-items:center; gap:10px; }
 .check-circle {
   width:22px; height:22px;
@@ -487,7 +489,7 @@ select option { background:var(--brand-black); color:#fff; }
   -webkit-backdrop-filter:blur(24px);
   border:1px solid rgba(245,166,35,0.28);
   border-radius:var(--radius-lg);
-  padding:30px;
+  padding:26px;
   box-shadow:0 12px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 .form-card h2 {
@@ -500,16 +502,16 @@ select option { background:var(--brand-black); color:#fff; }
 }
 .form-card .form-sub {
   font-size:12px; color:var(--text-on-dark-muted);
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
-.form-stack { display:flex; flex-direction:column; gap:12px; }
+.form-stack { display:flex; flex-direction:column; gap:10px; }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .form-label {
   display:block; font-size:11px; color:var(--text-on-dark-muted);
   text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px;
 }
 .form-input {
-  width:100%; padding:12px 14px; font-size:15px;
+  width:100%; padding:11px 14px; font-size:15px;
   background:rgba(255,255,255,0.07);
   border:1px solid rgba(255,255,255,0.18);
   border-radius:var(--radius-input); color:#fff;
@@ -589,8 +591,8 @@ select option { background:var(--brand-black); color:#fff; }
   overflow:hidden;
   background-color:#0a0a0a;
   background-image:
-    linear-gradient(180deg, rgba(10,10,10,0.86) 0%, rgba(10,10,10,0.56) 44%, rgba(10,10,10,0.88) 100%),
-    linear-gradient(105deg, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.62) 48%, rgba(10,10,10,0.24) 100%),
+    linear-gradient(180deg, rgba(10,10,10,0.76) 0%, rgba(10,10,10,0.38) 44%, rgba(10,10,10,0.82) 100%),
+    linear-gradient(105deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.42) 48%, rgba(10,10,10,0.12) 100%),
     url('assets/differentials-bg.jpg');
   background-size:cover;
   background-position:center 42%;
@@ -609,8 +611,20 @@ select option { background:var(--brand-black); color:#fff; }
   z-index:1;
 }
 .section-differentials .card-dark {
-  background:rgba(18,18,18,0.86);
+  background:rgba(18,18,18,0.8);
   backdrop-filter:blur(2px);
+}
+
+@media (min-width:901px) and (prefers-reduced-motion:no-preference) {
+  html { scroll-snap-type:y proximity; }
+  .hero,
+  .trust-bar,
+  .section,
+  .final-cta,
+  .footer {
+    scroll-snap-align:start;
+    scroll-margin-top:0;
+  }
 }
 
 /* ══════════════════════════════════════════════
