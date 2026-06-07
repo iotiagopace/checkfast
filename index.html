@@ -292,14 +292,14 @@ select option { background:var(--brand-black); color:#fff; }
 .navbar-inner {
   max-width:1160px;
   margin:0 auto;
-  padding:10px 24px;
+  padding:14px 24px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:16px;
 }
 .navbar-logo {
-  height:72px;
+  height:104px;
   width:auto;
   display:block;
   cursor:pointer;
@@ -930,18 +930,29 @@ select option { background:var(--brand-black); color:#fff; }
 /* ══════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════ */
-.footer { background:#0a0a0a; border-top:3px solid var(--brand-yellow); padding:40px 24px; }
+.footer { background:#0a0a0a; border-top:3px solid var(--brand-yellow); padding:52px 24px; }
 .footer-inner {
   max-width:1160px; margin:0 auto;
-  display:flex; justify-content:space-between; align-items:center;
-  flex-wrap:wrap; gap:24px;
+  display:grid;
+  grid-template-columns:minmax(260px,1.15fr) minmax(220px,.8fr) minmax(300px,1fr);
+  align-items:center;
+  gap:48px;
 }
-.footer-logo-img { height:72px; width:auto; display:block; margin-bottom:8px; opacity:0.95; }
-.footer-sub { font-size:12px; color:var(--text-on-dark-muted); }
-.footer-link { color:var(--brand-yellow); font-size:13px; font-weight:600; transition:opacity var(--dur-fast) ease; }
+.footer-brand { display:flex; flex-direction:column; align-items:flex-start; }
+.footer-logo-img { height:118px; width:auto; display:block; margin:0 0 12px; opacity:0.98; }
+.footer-sub { font-size:13px; color:var(--text-on-dark-muted); line-height:1.5; }
+.footer-link {
+  color:var(--brand-yellow);
+  font-size:14px;
+  font-weight:700;
+  transition:opacity var(--dur-fast) ease;
+  justify-self:center;
+  white-space:nowrap;
+}
 .footer-link:hover { opacity:.75; }
-.footer-copy { font-size:11px; color:var(--text-on-dark-faint); }
-.footer-dev { font-size:11px; color:var(--text-on-dark-faint); }
+.footer-meta { justify-self:end; text-align:left; max-width:360px; }
+.footer-copy { font-size:12px; color:var(--text-on-dark-faint); line-height:1.55; }
+.footer-dev { font-size:12px; color:var(--text-on-dark-faint); line-height:1.55; }
 .footer-dev a { color:var(--text-on-dark-muted); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.15); transition:color var(--dur-fast) ease; }
 .footer-dev a:hover { color:var(--brand-yellow); border-bottom-color:var(--brand-yellow); }
 
@@ -970,6 +981,15 @@ select option { background:var(--brand-black); color:#fff; }
   .stats-grid      { grid-template-columns:1fr 1fr; }
   .models-grid     { grid-template-columns:1fr; }
   .investment-grid { grid-template-columns:1fr; }
+  .footer-inner {
+    grid-template-columns:1fr;
+    justify-items:center;
+    text-align:center;
+    gap:28px;
+  }
+  .footer-brand { align-items:center; }
+  .footer-link,
+  .footer-meta { justify-self:center; text-align:center; }
   .process-grid    { grid-template-columns:repeat(3,1fr); }
   .process-grid::before { display:none; }
   /* Tablet: overlay um pouco mais denso para texto em coluna única */
@@ -1008,8 +1028,9 @@ select option { background:var(--brand-black); color:#fff; }
   .model-header { align-items:flex-start; gap:12px; flex-wrap:wrap; }
   .invest-row { gap:16px; align-items:flex-start; }
   .navbar-inner { padding:8px 16px; }
-  .navbar-logo { height:58px; }
-  .footer-logo-img { height:60px; }
+  .navbar-logo { height:72px; }
+  .footer { padding:44px 20px; }
+  .footer-logo-img { height:92px; }
   .stats-grid  { grid-template-columns:1fr 1fr; }
   .process-grid{ grid-template-columns:repeat(2,1fr); }
   .comp-header,
@@ -1242,7 +1263,7 @@ var CheckFastApp = (() => {
     return /* @__PURE__ */ React.createElement("section", { className: "final-cta" }, /* @__PURE__ */ React.createElement("div", { className: "final-cta-glow" }), /* @__PURE__ */ React.createElement("div", { className: "wrap", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("h2", { className: "reveal" }, "PRONTO PARA ", /* @__PURE__ */ React.createElement("span", null, "COME\xC7AR?")), /* @__PURE__ */ React.createElement("p", { className: "reveal reveal-delay-1" }, "Preencha o formul\xE1rio acima ou fale diretamente com nossa equipe. Conversa sem compromisso."), /* @__PURE__ */ React.createElement("div", { className: "final-cta-btns reveal reveal-delay-2" }, /* @__PURE__ */ React.createElement(CTAButton, { variant: "primary", onClick: scrollToForm }, "RECEBER APRESENTA\xC7\xC3O"), /* @__PURE__ */ React.createElement(CTAButton, { variant: "whatsapp", href: "mailto:expansao@checkfastvistoria.com.br?subject=Interesse%20na%20franquia%20CheckFast" }, "\u2709 FALAR COM EXPANS\xC3O"))));
   }
   function FooterSection() {
-    return /* @__PURE__ */ React.createElement("footer", { className: "footer" }, /* @__PURE__ */ React.createElement("div", { className: "footer-inner" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("img", { src: "assets/logo-dark-bg.png", alt: "CheckFast Vistoria Veicular", className: "footer-logo-img" }), /* @__PURE__ */ React.createElement("div", { className: "footer-sub" }, "Vistoria Veicular \xB7 Desde 2018 \xB7 Belo Horizonte, MG")), /* @__PURE__ */ React.createElement("a", { href: "https://checkfastvistorias.com.br", className: "footer-link", target: "_blank", rel: "noopener" }, "checkfastvistorias.com.br \u2197"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "footer-copy" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " CheckFast Vistoria Veicular. Todos os direitos reservados."), /* @__PURE__ */ React.createElement("div", { className: "footer-dev", style: { marginTop: "4px" } }, "Desenvolvido por ", /* @__PURE__ */ React.createElement("a", { href: "https://metry.cc", target: "_blank", rel: "noopener" }, "metry.cc"), " \u2197"))));
+    return /* @__PURE__ */ React.createElement("footer", { className: "footer" }, /* @__PURE__ */ React.createElement("div", { className: "footer-inner" }, /* @__PURE__ */ React.createElement("div", { className: "footer-brand" }, /* @__PURE__ */ React.createElement("img", { src: "assets/logo-dark-bg.png", alt: "CheckFast Vistoria Veicular", className: "footer-logo-img" }), /* @__PURE__ */ React.createElement("div", { className: "footer-sub" }, "Vistoria Veicular \xB7 Desde 2018 \xB7 Belo Horizonte, MG")), /* @__PURE__ */ React.createElement("a", { href: "https://checkfastvistorias.com.br", className: "footer-link", target: "_blank", rel: "noopener" }, "checkfastvistorias.com.br \u2197"), /* @__PURE__ */ React.createElement("div", { className: "footer-meta" }, /* @__PURE__ */ React.createElement("div", { className: "footer-copy" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " CheckFast Vistoria Veicular. Todos os direitos reservados."), /* @__PURE__ */ React.createElement("div", { className: "footer-dev", style: { marginTop: "4px" } }, "Desenvolvido por ", /* @__PURE__ */ React.createElement("a", { href: "https://metry.cc", target: "_blank", rel: "noopener" }, "metry.cc"), " \u2197"))));
   }
   function App() {
     const formRef = useRef(null);
