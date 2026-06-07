@@ -450,30 +450,6 @@ select option { background:var(--brand-black); color:#fff; }
   position:relative;
   z-index:1;
 }
-.hero-badge {
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:var(--yellow-glass);
-  border:1px solid var(--yellow-border);
-  border-radius:var(--radius-badge);
-  padding:6px 16px;
-  margin-bottom:22px;
-}
-.hero-badge span {
-  font-family:var(--font-display);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.07em;
-  text-transform:uppercase;
-  color:var(--brand-yellow);
-}
-.hero-badge-dot {
-  width:6px; height:6px;
-  border-radius:50%;
-  background:var(--brand-yellow);
-  animation:pulse-glow 2s infinite;
-}
 .hero-h1 {
   font-family:var(--font-display);
   font-size:var(--text-hero);
@@ -1142,7 +1118,7 @@ var CheckFastApp = (() => {
         window.scrollTo({ top, behavior: "smooth" });
       }
     };
-    return /* @__PURE__ */ React.createElement("section", { className: "hero" }, /* @__PURE__ */ React.createElement("div", { className: "hero-glow hero-glow-1" }), /* @__PURE__ */ React.createElement("div", { className: "hero-glow hero-glow-2" }), /* @__PURE__ */ React.createElement("div", { className: "hero-glow hero-glow-3" }), /* @__PURE__ */ React.createElement("div", { className: "hero-grid" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "hero-badge" }, /* @__PURE__ */ React.createElement("div", { className: "hero-badge-dot" }), /* @__PURE__ */ React.createElement("span", null, "FRANQUIA DE VISTORIA VEICULAR")), /* @__PURE__ */ React.createElement("h1", { className: "hero-h1" }, [
+    return /* @__PURE__ */ React.createElement("section", { className: "hero" }, /* @__PURE__ */ React.createElement("div", { className: "hero-glow hero-glow-1" }), /* @__PURE__ */ React.createElement("div", { className: "hero-glow hero-glow-2" }), /* @__PURE__ */ React.createElement("div", { className: "hero-glow hero-glow-3" }), /* @__PURE__ */ React.createElement("div", { className: "hero-grid" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", { className: "hero-h1" }, [
       { t: "LUCRE", d: 0, accent: false },
       { t: "COM", d: 0.07, accent: false },
       { t: "A", d: 0.14, accent: false },
