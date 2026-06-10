@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- SEO base -->
-<title>CheckFast — Franquia de Vistoria Veicular · Zero Royalties</title>
+<title>CheckFast | Franquia de Vistoria Veicular · Zero Royalties</title>
 <meta name="description" content="Seja franqueado CheckFast: zero royalties, investimento a partir de R$ 57 mil, payback em até 6 meses. Home Based ou Store in Store em todo o Brasil.">
 <link rel="canonical" href="https://checkfastvistorias.com.br/">
 
@@ -13,7 +13,7 @@
 <meta property="og:type"        content="website">
 <meta property="og:locale"      content="pt_BR">
 <meta property="og:site_name"   content="CheckFast Vistoria Veicular">
-<meta property="og:title"       content="CheckFast — Franquia de Vistoria Veicular · Zero Royalties">
+<meta property="og:title"       content="CheckFast | Franquia de Vistoria Veicular · Zero Royalties">
 <meta property="og:description" content="Seja franqueado CheckFast: zero royalties, investimento a partir de R$ 57 mil, payback em até 6 meses. Home Based ou Store in Store em todo o Brasil.">
 <meta property="og:url"         content="https://checkfastvistorias.com.br/">
 <meta property="og:image"       content="https://checkfastvistorias.com.br/assets/og-cover.jpg">
@@ -22,7 +22,7 @@
 
 <!-- Twitter Cards -->
 <meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="CheckFast — Franquia de Vistoria Veicular · Zero Royalties">
+<meta name="twitter:title"       content="CheckFast | Franquia de Vistoria Veicular · Zero Royalties">
 <meta name="twitter:description" content="Seja franqueado CheckFast: zero royalties, investimento a partir de R$ 57 mil, payback em até 6 meses. Home Based ou Store in Store em todo o Brasil.">
 <meta name="twitter:image"       content="https://checkfastvistorias.com.br/assets/og-cover.jpg">
 
@@ -41,7 +41,7 @@
       "name": "CheckFast Vistoria Veicular",
       "url": "https://checkfastvistorias.com.br/",
       "logo": "https://checkfastvistorias.com.br/assets/logo-dark-bg.png",
-      "description": "Franquia de vistoria veicular digital com zero royalties. Fundada em 2018 em Belo Horizonte/MG, com expansão nacional e mais de 50 franqueados ativos.",
+      "description": "Franquia de vistoria veicular com zero royalties. Fundada em 2018 em Belo Horizonte/MG, com expansão nacional e mais de 30 unidades e franqueados.",
       "foundingDate": "2018",
       "areaServed": "BR",
       "contactPoint": {
@@ -83,7 +83,7 @@
     {
       "@type": "Question",
       "name": "Há royalties ou taxas mensais?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Zero royalties. A CheckFast opera no modelo de licenciamento — você paga uma vez e fica com 100% do faturamento." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Zero royalties. A CheckFast opera no modelo de licenciamento. Você paga uma vez e fica com 100% do faturamento." }
     },
     {
       "@type": "Question",
@@ -103,7 +103,7 @@
     {
       "@type": "Question",
       "name": "Quanto tempo leva para iniciar a operação?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Em média 30 a 45 dias após a assinatura do contrato — treinamento, homologação do kit e registro junto ao DETRAN local." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Em média 30 a 45 dias após a assinatura do contrato, incluindo capacitação, homologação do kit e registro junto ao DETRAN local." }
     }
   ]
 }
@@ -121,7 +121,7 @@
     { "@type": "HowToStep", "position": 2, "name": "Apresentação", "text": "Participe de uma reunião online com a equipe CheckFast." },
     { "@type": "HowToStep", "position": 3, "name": "Análise",      "text": "Avaliação de perfil e disponibilidade de território na sua cidade." },
     { "@type": "HowToStep", "position": 4, "name": "Contrato",     "text": "Assinatura do contrato e recebimento do kit de franquia." },
-    { "@type": "HowToStep", "position": 5, "name": "Operação",     "text": "Treinamento completo de 40h e início das operações." }
+    { "@type": "HowToStep", "position": 5, "name": "Operação",     "text": "Capacitação, Método Incubadora e início das operações." }
   ]
 }
 </script>
@@ -616,6 +616,238 @@ select option { background:var(--brand-black); color:#fff; }
   backdrop-filter:blur(2px);
 }
 
+.services-showcase {
+  display:grid;
+  grid-template-columns:minmax(260px,0.72fr) minmax(0,1.8fr);
+  gap:28px;
+  align-items:start;
+}
+.services-intro {
+  background:var(--brand-yellow);
+  color:var(--brand-black);
+  border-radius:var(--radius-lg);
+  padding:32px;
+  min-height:100%;
+  position:relative;
+  overflow:hidden;
+}
+.services-intro::after {
+  content:"";
+  position:absolute;
+  inset:-80px -80px auto auto;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(26,26,26,0.12);
+  border-radius:50%;
+}
+.services-intro h2 {
+  font-family:var(--font-display);
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:0.96;
+  font-weight:900;
+  letter-spacing:0;
+  margin-bottom:24px;
+}
+.services-intro h2::after {
+  content:"";
+  display:block;
+  width:82px;
+  height:4px;
+  background:#fff;
+  margin-top:18px;
+  border-radius:999px;
+}
+.services-intro h3 {
+  font-family:var(--font-display);
+  font-size:18px;
+  line-height:1.25;
+  margin-bottom:12px;
+}
+.services-intro p {
+  font-size:14px;
+  line-height:1.6;
+  color:rgba(26,26,26,0.78);
+}
+.service-benefits {
+  display:grid;
+  gap:10px;
+  margin-top:28px;
+}
+.service-benefit {
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:12px;
+  align-items:center;
+  background:rgba(255,255,255,0.76);
+  border-radius:10px;
+  padding:12px;
+}
+.service-benefit-icon {
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--brand-black);
+  color:var(--brand-yellow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+.service-benefit-title {
+  font-family:var(--font-display);
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--brand-black);
+}
+.service-benefit-text {
+  font-size:11px;
+  line-height:1.35;
+  color:rgba(26,26,26,0.68);
+}
+.services-panel {
+  background:#fff;
+  border:1px solid var(--neutral-border);
+  border-radius:var(--radius-lg);
+  padding:26px;
+  box-shadow:var(--shadow-card);
+}
+.services-kicker {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  font-family:var(--font-display);
+  font-size:14px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--brand-black);
+  margin-bottom:20px;
+}
+.services-kicker-icon {
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--brand-yellow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.service-card {
+  display:grid;
+  grid-template-columns:52px 1fr;
+  gap:14px;
+  min-height:148px;
+  padding:18px;
+  border:1px solid var(--neutral-border);
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+.service-card-icon {
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--brand-yellow);
+  color:var(--brand-black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.service-card-icon svg {
+  width:24px;
+  height:24px;
+}
+.service-card-title {
+  font-family:var(--font-display);
+  font-size:14px;
+  font-weight:800;
+  line-height:1.25;
+  text-transform:uppercase;
+  color:var(--brand-black);
+  margin-bottom:10px;
+}
+.service-card-title::after {
+  content:"";
+  display:block;
+  width:38px;
+  height:3px;
+  background:var(--brand-yellow);
+  margin-top:8px;
+  border-radius:999px;
+}
+.service-card-desc {
+  font-size:12px;
+  line-height:1.55;
+  color:var(--neutral-med);
+}
+.services-metrics {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+.services-metric {
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:12px;
+  align-items:center;
+  background:var(--brand-yellow-light);
+  border:1px solid var(--brand-yellow-muted);
+  border-radius:10px;
+  padding:14px;
+}
+.services-metric-icon {
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--brand-yellow);
+  color:var(--brand-black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.services-metric-value {
+  font-family:var(--font-display);
+  font-size:18px;
+  font-weight:900;
+  color:var(--brand-black);
+  line-height:1;
+}
+.services-metric-label {
+  font-size:11px;
+  line-height:1.35;
+  color:var(--neutral-med);
+}
+.simple-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.proof-panel {
+  border:1px solid rgba(245,166,35,0.2);
+  border-radius:var(--radius-lg);
+  padding:24px;
+  background:rgba(255,255,255,0.04);
+}
+.proof-panel-title {
+  font-family:var(--font-display);
+  font-size:16px;
+  font-weight:800;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.proof-panel-text {
+  color:var(--text-on-dark-secondary);
+  font-size:14px;
+  line-height:1.6;
+}
+
 @media (min-width:901px) and (prefers-reduced-motion:no-preference) {
   html { scroll-snap-type:y proximity; }
   .hero,
@@ -996,6 +1228,9 @@ select option { background:var(--brand-black); color:#fff; }
 ══════════════════════════════════════════════ */
 @media (max-width:900px) {
   .hero-grid       { grid-template-columns:1fr; }
+  .services-showcase { grid-template-columns:1fr; }
+  .services-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .services-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .authority-grid  { grid-template-columns:1fr; }
   .stats-grid      { grid-template-columns:1fr 1fr; }
   .models-grid     { grid-template-columns:1fr; }
@@ -1031,6 +1266,11 @@ select option { background:var(--brand-black); color:#fff; }
     background-position:center center;
   }
   .section { padding:72px 20px; }
+  .services-intro,
+  .services-panel { padding:22px; }
+  .services-grid,
+  .services-metrics { grid-template-columns:1fr; }
+  .service-card { min-height:auto; }
   .wrap { padding:0; max-width:100%; }
   .hero-grid { max-width:100%; gap:48px; }
   .hero-grid > div { min-width:0; }
@@ -1139,7 +1379,7 @@ var CheckFastApp = (() => {
       window.addEventListener("scroll", onScroll, { passive: true });
       return () => window.removeEventListener("scroll", onScroll);
     }, []);
-    return /* @__PURE__ */ React.createElement("nav", { className: `navbar${scrolled ? " scrolled" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "navbar-inner" }, /* @__PURE__ */ React.createElement("img", { src: "assets/logo-dark-bg.png", alt: "CheckFast \u2014 Franquia de Vistoria Veicular", className: "navbar-logo", onClick: scrollToForm }), /* @__PURE__ */ React.createElement(CTAButton, { variant: "secondary", size: "sm", onClick: scrollToForm }, "QUERO SER FRANQUEADO")));
+    return /* @__PURE__ */ React.createElement("nav", { className: `navbar${scrolled ? " scrolled" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: "navbar-inner" }, /* @__PURE__ */ React.createElement("img", { src: "assets/logo-dark-bg.png", alt: "CheckFast Franquia de Vistoria Veicular", className: "navbar-logo", onClick: scrollToForm }), /* @__PURE__ */ React.createElement(CTAButton, { variant: "secondary", size: "sm", onClick: scrollToForm }, "QUERO SER FRANQUEADO")));
   }
   function HeroSection({ formRef }) {
     const [form, setForm] = useState({ nome: "", whatsapp: "", email: "", cidade: "", capital: "" });
@@ -1169,10 +1409,10 @@ var CheckFastApp = (() => {
       { t: "EFICIENTE", d: 0.38, accent: true },
       { t: "DO", d: 0.48, accent: false },
       { t: "BRASIL", d: 0.55, accent: false }
-    ].map(({ t, d, accent }, i, words) => /* @__PURE__ */ React.createElement("span", { key: t, className: `hero-word${accent ? " accent" : ""}`, style: { animationDelay: `${d}s` } }, i < words.length - 1 ? `${t}\xA0` : t))), /* @__PURE__ */ React.createElement("p", { className: "hero-p" }, "Modelo comprovado, zero royalties, suporte completo. A CheckFast abre portas para empreendedores de todos os perfis \u2014 sem precisar de experi\xEAncia pr\xE9via."), /* @__PURE__ */ React.createElement("div", { className: "hero-bullets" }, /* @__PURE__ */ React.createElement("div", { className: "check-bullet" }, /* @__PURE__ */ React.createElement("div", { className: "check-circle" }, "\u2713"), /* @__PURE__ */ React.createElement("span", { className: "check-text" }, "Sem royalties \u2014 100% da receita \xE9 sua")), /* @__PURE__ */ React.createElement("div", { className: "check-bullet" }, /* @__PURE__ */ React.createElement("div", { className: "check-circle" }, "\u2713"), /* @__PURE__ */ React.createElement("span", { className: "check-text" }, "Treinamento completo de 40 horas inclu\xEDdo")), /* @__PURE__ */ React.createElement("div", { className: "check-bullet" }, /* @__PURE__ */ React.createElement("div", { className: "check-circle" }, "\u2713"), /* @__PURE__ */ React.createElement("span", { className: "check-text" }, "App e checklist digital exclusivos CheckFast"))), /* @__PURE__ */ React.createElement(CTAButton, { variant: "hero", onClick: scrollToMe }, "RECEBER APRESENTA\xC7\xC3O DA FRANQUIA \u2192")), /* @__PURE__ */ React.createElement("div", { ref: formRef, className: "form-card" }, submitted ? /* @__PURE__ */ React.createElement("div", { className: "submitted-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "icon" }, "\u2705"), /* @__PURE__ */ React.createElement("h3", null, "CADASTRO ENVIADO!"), /* @__PURE__ */ React.createElement("p", null, "Nossa equipe entrar\xE1 em contato pelo WhatsApp em at\xE9 24 horas. Fique de olho!")) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", null, "RECEBA A APRESENTA\xC7\xC3O"), /* @__PURE__ */ React.createElement("p", { className: "form-sub" }, "Preencha abaixo \u2014 sem compromisso, 100% gratuito."), /* @__PURE__ */ React.createElement("form", { onSubmit: submit, className: "form-stack" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "Nome completo"), /* @__PURE__ */ React.createElement("input", { className: "form-input", name: "nome", value: form.nome, onChange: ch, placeholder: "Seu nome completo", required: true })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "WhatsApp"), /* @__PURE__ */ React.createElement("input", { className: "form-input", name: "whatsapp", value: form.whatsapp, onChange: ch, placeholder: "(00) 00000-0000", required: true })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "E-mail"), /* @__PURE__ */ React.createElement("input", { className: "form-input", type: "email", name: "email", value: form.email, onChange: ch, placeholder: "seu@email.com", required: true })), /* @__PURE__ */ React.createElement("div", { className: "form-row" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "Cidade"), /* @__PURE__ */ React.createElement("input", { className: "form-input", name: "cidade", value: form.cidade, onChange: ch, placeholder: "Sua cidade", required: true })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "Capital dispon\xEDvel"), /* @__PURE__ */ React.createElement("select", { className: "form-input", name: "capital", value: form.capital, onChange: ch, style: { cursor: "pointer" }, required: true }, /* @__PURE__ */ React.createElement("option", { value: "" }, "Selecione"), /* @__PURE__ */ React.createElement("option", { value: "ate50" }, "At\xE9 R$ 50mil"), /* @__PURE__ */ React.createElement("option", { value: "50-80" }, "R$ 50\u201380mil"), /* @__PURE__ */ React.createElement("option", { value: "80-120" }, "R$ 80\u2013120mil"), /* @__PURE__ */ React.createElement("option", { value: "120+" }, "Acima de R$ 120mil")))), /* @__PURE__ */ React.createElement(CTAButton, { variant: "primary", fullWidth: true, type: "submit" }, loading ? "ENVIANDO..." : "RECEBER APRESENTA\xC7\xC3O \u2192"), /* @__PURE__ */ React.createElement("p", { className: "form-disclaimer" }, "\u{1F512} Sem compromisso. Seus dados est\xE3o seguros."))))));
+    ].map(({ t, d, accent }, i, words) => /* @__PURE__ */ React.createElement("span", { key: t, className: `hero-word${accent ? " accent" : ""}`, style: { animationDelay: `${d}s` } }, i < words.length - 1 ? `${t}\xA0` : t))), /* @__PURE__ */ React.createElement("p", { className: "hero-p" }, "Modelo comprovado, zero royalties e suporte completo. A CheckFast abre portas para empreendedores de todos os perfis, mesmo sem experi\xEAncia pr\xE9via."), /* @__PURE__ */ React.createElement("div", { className: "hero-bullets" }, /* @__PURE__ */ React.createElement("div", { className: "check-bullet" }, /* @__PURE__ */ React.createElement("div", { className: "check-circle" }, "\u2713"), /* @__PURE__ */ React.createElement("span", { className: "check-text" }, "Franquia sem royalties")), /* @__PURE__ */ React.createElement("div", { className: "check-bullet" }, /* @__PURE__ */ React.createElement("div", { className: "check-circle" }, "\u2713"), /* @__PURE__ */ React.createElement("span", { className: "check-text" }, "100% da receita \xE9 sua")), /* @__PURE__ */ React.createElement("div", { className: "check-bullet" }, /* @__PURE__ */ React.createElement("div", { className: "check-circle" }, "\u2713"), /* @__PURE__ */ React.createElement("span", { className: "check-text" }, "Marketing especializado e capta\xE7\xE3o de clientes"))), /* @__PURE__ */ React.createElement(CTAButton, { variant: "hero", onClick: scrollToMe }, "RECEBER APRESENTA\xC7\xC3O DA FRANQUIA \u2192")), /* @__PURE__ */ React.createElement("div", { ref: formRef, className: "form-card" }, submitted ? /* @__PURE__ */ React.createElement("div", { className: "submitted-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "icon" }, "\u2705"), /* @__PURE__ */ React.createElement("h3", null, "CADASTRO ENVIADO!"), /* @__PURE__ */ React.createElement("p", null, "Nossa equipe entrar\xE1 em contato pelo WhatsApp em at\xE9 24 horas. Fique de olho!")) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", null, "RECEBA A APRESENTA\xC7\xC3O"), /* @__PURE__ */ React.createElement("p", { className: "form-sub" }, "Preencha abaixo. \xC9 gratuito e sem compromisso."), /* @__PURE__ */ React.createElement("form", { onSubmit: submit, className: "form-stack" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "Nome completo"), /* @__PURE__ */ React.createElement("input", { className: "form-input", name: "nome", value: form.nome, onChange: ch, placeholder: "Seu nome completo", required: true })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "WhatsApp"), /* @__PURE__ */ React.createElement("input", { className: "form-input", name: "whatsapp", value: form.whatsapp, onChange: ch, placeholder: "(00) 00000-0000", required: true })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "E-mail"), /* @__PURE__ */ React.createElement("input", { className: "form-input", type: "email", name: "email", value: form.email, onChange: ch, placeholder: "seu@email.com", required: true })), /* @__PURE__ */ React.createElement("div", { className: "form-row" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "Cidade"), /* @__PURE__ */ React.createElement("input", { className: "form-input", name: "cidade", value: form.cidade, onChange: ch, placeholder: "Sua cidade", required: true })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "form-label" }, "Capital dispon\xEDvel"), /* @__PURE__ */ React.createElement("select", { className: "form-input", name: "capital", value: form.capital, onChange: ch, style: { cursor: "pointer" }, required: true }, /* @__PURE__ */ React.createElement("option", { value: "" }, "Selecione"), /* @__PURE__ */ React.createElement("option", { value: "ate50" }, "At\xE9 R$ 50mil"), /* @__PURE__ */ React.createElement("option", { value: "50-80" }, "R$ 50 a 80mil"), /* @__PURE__ */ React.createElement("option", { value: "80-120" }, "R$ 80 a 120mil"), /* @__PURE__ */ React.createElement("option", { value: "120+" }, "Acima de R$ 120mil")))), /* @__PURE__ */ React.createElement(CTAButton, { variant: "primary", fullWidth: true, type: "submit" }, loading ? "ENVIANDO..." : "RECEBER APRESENTA\xC7\xC3O \u2192"), /* @__PURE__ */ React.createElement("p", { className: "form-disclaimer" }, "\u{1F512} Sem compromisso. Seus dados est\xE3o seguros."))))));
   }
   function AuthoritySection() {
-    return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement("div", { className: "authority-grid" }, /* @__PURE__ */ React.createElement("div", { className: "reveal" }, /* @__PURE__ */ React.createElement(SectionTitle, { subtitle: "Nascida em Belo Horizonte, a CheckFast \xE9 refer\xEAncia em vistoria veicular digital no Brasil \u2014 com tecnologia propriet\xE1ria e metodologia testada em opera\xE7\xF5es di\xE1rias." }, "POR QUE A ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "CHECKFAST?")), /* @__PURE__ */ React.createElement("div", { className: "metrics-row" }, /* @__PURE__ */ React.createElement(MetricBadge, { value: "2018", label: "Funda\xE7\xE3o", theme: "light" }), /* @__PURE__ */ React.createElement(MetricBadge, { value: "50+", label: "Franqueados", theme: "light" }), /* @__PURE__ */ React.createElement(MetricBadge, { value: "15min", label: "Por vistoria", theme: "light" }))), /* @__PURE__ */ React.createElement("div", { className: "authority-body reveal reveal-delay-2" }, /* @__PURE__ */ React.createElement("p", null, "A vistoria veicular \xE9 exig\xEAncia legal para toda transfer\xEAncia de ve\xEDculo. Isso garante demanda constante e previs\xEDvel \u2014 independente do cen\xE1rio econ\xF4mico."), /* @__PURE__ */ React.createElement("p", null, "Com o app CheckFast, o processo \xE9 100% digital: checklist automatizado, laudo em 15 minutos e entrega imediata ao cliente.")))));
+    return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement("div", { className: "authority-grid" }, /* @__PURE__ */ React.createElement("div", { className: "reveal" }, /* @__PURE__ */ React.createElement(SectionTitle, { subtitle: "Nascida em Belo Horizonte, a CheckFast \xE9 refer\xEAncia em vistoria veicular no Brasil, com tecnologia propriet\xE1ria e metodologia validada em opera\xE7\xF5es di\xE1rias." }, "POR QUE A ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "CHECKFAST?")), /* @__PURE__ */ React.createElement("div", { className: "metrics-row" }, /* @__PURE__ */ React.createElement(MetricBadge, { value: "2018", label: "Funda\xE7\xE3o", theme: "light" }), /* @__PURE__ */ React.createElement(MetricBadge, { value: "+30", label: "Unidades e franqueados", theme: "light" }), /* @__PURE__ */ React.createElement(MetricBadge, { value: "30min", label: "Por vistoria", theme: "light" }))), /* @__PURE__ */ React.createElement("div", { className: "authority-body reveal reveal-delay-2" }, /* @__PURE__ */ React.createElement("p", null, "A vistoria veicular \xE9 exig\xEAncia legal para toda transfer\xEAncia de ve\xEDculo. Isso garante demanda constante e previs\xEDvel, independente do cen\xE1rio econ\xF4mico."), /* @__PURE__ */ React.createElement("p", null, "Com o app CheckFast, o processo \xE9 digital: checklist automatizado, registro t\xE9cnico e entrega \xE1gil do laudo ao cliente.")))));
   }
   function StatCard({ value, label, delay }) {
     return /* @__PURE__ */ React.createElement("div", { className: `stat-card reveal reveal-delay-${delay}` }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, value), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, label));
@@ -1184,47 +1424,81 @@ var CheckFastApp = (() => {
       { v: "R$ 4bi", l: "Volume anual do mercado", d: 3 },
       { v: "12%", l: "Crescimento ano a ano", d: 4 }
     ];
-    return /* @__PURE__ */ React.createElement("section", { className: "section section-neutral" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { align: "center", subtitle: "O mercado de vistorias veiculares movimenta bilh\xF5es por ano \u2014 e a digitaliza\xE7\xE3o ainda est\xE1 no in\xEDcio." }, "MERCADO DE ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "R$ 4 BILH\xD5ES")), /* @__PURE__ */ React.createElement("div", { className: "stats-grid" }, stats.map((s, i) => /* @__PURE__ */ React.createElement(StatCard, { key: i, value: s.v, label: s.l, delay: s.d })))));
+    return /* @__PURE__ */ React.createElement("section", { className: "section section-neutral" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { align: "center", subtitle: "O mercado de vistorias veiculares movimenta bilh\xF5es por ano, e a digitaliza\xE7\xE3o ainda est\xE1 no in\xEDcio." }, "MERCADO DE ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "R$ 4 BILH\xD5ES")), /* @__PURE__ */ React.createElement("div", { className: "stats-grid" }, stats.map((s, i) => /* @__PURE__ */ React.createElement(StatCard, { key: i, value: s.v, label: s.l, delay: s.d })))));
+  }
+  function MarketGrowthSection() {
+    const drivers = [
+      { icon: /* @__PURE__ */ React.createElement(SvgCar, null), title: "Usados e seminovos", description: "O crescimento do mercado de usados amplia a procura por valida\xE7\xE3o t\xE9cnica antes da compra." },
+      { icon: /* @__PURE__ */ React.createElement(SvgSearch, null), title: "Consumidor cauteloso", description: "Quem compra quer reduzir riscos, conferir proced\xEAncia e negociar com mais seguran\xE7a." },
+      { icon: /* @__PURE__ */ React.createElement(SvgCoin, null), title: "Financiamento", description: "Bancos, seguradoras e compradores exigem mais informa\xE7\xE3o para liberar ou proteger opera\xE7\xF5es." },
+      { icon: /* @__PURE__ */ React.createElement(SvgCalendar, null), title: "Alta recorr\xEAncia", description: "Transfer\xEAncias, vendas, seguros, frotas e proced\xEAncia criam demanda cont\xEDnua ao longo do ano." }
+    ];
+    return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { align: "center", subtitle: "O investidor entra em um mercado consolidado, crescente e com demanda cont\xEDnua." }, "POR QUE A DEMANDA POR VISTORIA ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "CRESCE ANO AP\xD3S ANO?")), /* @__PURE__ */ React.createElement("div", { className: "simple-grid" }, drivers.map((d, i) => /* @__PURE__ */ React.createElement("div", { key: d.title, className: `reveal reveal-delay-${i + 1}` }, /* @__PURE__ */ React.createElement(Card, { icon: d.icon, title: d.title, description: d.description, variant: "light" }))))));
   }
   function PositioningSection({ scrollToForm }) {
-    return /* @__PURE__ */ React.createElement("section", { className: "section section-dark", style: { textAlign: "center", position: "relative", overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "600px", height: "600px", borderRadius: "50%", background: "radial-gradient(ellipse at center, rgba(245,166,35,0.06) 0%, transparent 70%)", pointerEvents: "none" } }), /* @__PURE__ */ React.createElement("div", { className: "wrap", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("p", { className: "pos-title reveal" }, "A \xDANICA FRANQUIA AUTOMOTIVA ", /* @__PURE__ */ React.createElement("span", null, "COM ZERO ROYALTIES")), /* @__PURE__ */ React.createElement("p", { className: "reveal reveal-delay-1", style: { fontSize: "17px", color: "var(--text-on-dark-secondary)", lineHeight: 1.6, marginBottom: "32px", maxWidth: "680px", margin: "0 auto 32px" } }, "Enquanto outras franquias cobram 5% a 10% do faturamento todo m\xEAs, na CheckFast o que voc\xEA fatura, voc\xEA fica. Simples assim."), /* @__PURE__ */ React.createElement(CTAButton, { variant: "primary", onClick: scrollToForm }, "CONHECER O MODELO COMPLETO")));
+    return /* @__PURE__ */ React.createElement("section", { className: "section section-dark", style: { textAlign: "center", position: "relative", overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "600px", height: "600px", borderRadius: "50%", background: "radial-gradient(ellipse at center, rgba(245,166,35,0.06) 0%, transparent 70%)", pointerEvents: "none" } }), /* @__PURE__ */ React.createElement("div", { className: "wrap", style: { position: "relative", zIndex: 1 } }, /* @__PURE__ */ React.createElement("p", { className: "pos-title reveal" }, "A \xDANICA FRANQUIA AUTOMOTIVA ", /* @__PURE__ */ React.createElement("span", null, "COM ZERO ROYALTIES")), /* @__PURE__ */ React.createElement("p", { className: "reveal reveal-delay-1", style: { fontSize: "17px", color: "var(--text-on-dark-secondary)", lineHeight: 1.6, marginBottom: "32px", maxWidth: "680px", margin: "0 auto 32px" } }, "Enquanto outras franquias cobram 5% a 10% do faturamento todo m\xEAs, na CheckFast o que voc\xEA fatura fica com voc\xEA. Simples assim."), /* @__PURE__ */ React.createElement(CTAButton, { variant: "primary", onClick: scrollToForm }, "CONHECER O MODELO COMPLETO")));
   }
   function ServicesSection() {
     const svs = [
-      { icon: /* @__PURE__ */ React.createElement(SvgCar, null), t: "Vistoria de Transfer\xEAncia", d: "Exigida legalmente para toda troca de propriet\xE1rio. Demanda garantida e constante." },
-      { icon: /* @__PURE__ */ React.createElement(SvgSearch, null), t: "Vistoria Cautelar", d: "Inspe\xE7\xE3o pr\xE9via \xE0 compra. Protege o comprador e agrega valor ao vendedor." },
-      { icon: /* @__PURE__ */ React.createElement(SvgWrench, null), t: "Revis\xE3o de Acess\xF3rios", d: "Checkup de itens instalados: som, alarme, vidros, blindagem." },
-      { icon: /* @__PURE__ */ React.createElement(SvgDoc, null), t: "Laudo Digital Imediato", d: "Emitido pelo app em 15 minutos. PDF com QR code de valida\xE7\xE3o." }
+      { icon: /* @__PURE__ */ React.createElement(SvgSearch, null), t: "Vistoria cautelar pr\xE9-compra", d: "Verifica\xE7\xE3o completa do ve\xEDculo para compra segura e sem surpresas." },
+      { icon: /* @__PURE__ */ React.createElement(SvgPercent, null), t: "Prote\xE7\xE3o veicular", d: "Vistorias para inclus\xE3o, renova\xE7\xE3o ou acompanhamento de ap\xF3lices de seguro." },
+      { icon: /* @__PURE__ */ React.createElement(SvgWrench, null), t: "Vistoria de proced\xEAncia", d: "An\xE1lise criteriosa da origem do ve\xEDculo e sua documenta\xE7\xE3o." },
+      { icon: /* @__PURE__ */ React.createElement(SvgDoc, null), t: "Vistoria judicial ou pericial", d: "Laudos t\xE9cnicos para processos judiciais e demandas periciais." },
+      { icon: /* @__PURE__ */ React.createElement(SvgCar, null), t: "Vistoria de frota", d: "Gest\xE3o e controle da frota com mais seguran\xE7a, efici\xEAncia e praticidade." },
+      { icon: /* @__PURE__ */ React.createElement(SvgCalendar, null), t: "Avalia\xE7\xE3o de mercado", d: "Relat\xF3rios t\xE9cnicos que ajudam a definir o valor justo de compra, venda ou seguro." },
+      { icon: /* @__PURE__ */ React.createElement(SvgHome, null), t: "Vistoria para venda", d: "Mais credibilidade na hora de vender. Transpar\xEAncia que agiliza e valoriza o neg\xF3cio." },
+      { icon: /* @__PURE__ */ React.createElement(SvgCoin, null), t: "Vistoria para financiamento", d: "Laudos que facilitam aprova\xE7\xE3o de cr\xE9dito com seguradoras, financeiras e bancos." },
+      { icon: /* @__PURE__ */ React.createElement(SvgGrad, null), t: "E muito mais", d: "Servi\xE7os complementares que atendem necessidades do mercado automotivo." }
     ];
-    return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { subtitle: "Diversifique a receita com m\xFAltiplos tipos de vistoria \u2014 todos no mesmo app." }, "SERVI\xC7OS ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "CHECKFAST")), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "20px" } }, svs.map((s, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: `reveal reveal-delay-${i + 1}` }, /* @__PURE__ */ React.createElement(Card, { icon: s.icon, title: s.t, description: s.d, variant: "light" }))))));
+    const benefits = [
+      ["Alta demanda", "Mercado em crescimento e exig\xEAncias constantes."],
+      ["Baixo custo operacional", "Modelo enxuto com excelente margem."],
+      ["Mais fontes de receita", "Diversifica\xE7\xE3o de servi\xE7os recorrentes."]
+    ];
+    const metrics = [
+      ["+20", "servi\xE7os no portf\xF3lio", /* @__PURE__ */ React.createElement(SvgPhone, null)],
+      ["Diversifica\xE7\xE3o", "receitas com servi\xE7os de alta demanda", /* @__PURE__ */ React.createElement(SvgGrad, null)],
+      ["230%", "margem m\xE9dia em servi\xE7os", /* @__PURE__ */ React.createElement(SvgCoin, null)],
+      ["Nacional", "modelo validado em expans\xE3o", /* @__PURE__ */ React.createElement(SvgMap, null)]
+    ];
+    return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement("div", { className: "services-showcase" }, /* @__PURE__ */ React.createElement("aside", { className: "services-intro reveal" }, /* @__PURE__ */ React.createElement("h2", null, "Nossos", /* @__PURE__ */ React.createElement("br", null), "Servi\xE7os"), /* @__PURE__ */ React.createElement("h3", null, "Solu\xE7\xF5es completas para decis\xF5es seguras."), /* @__PURE__ */ React.createElement("p", null, "Portf\xF3lio completo de vistorias e consultas veiculares para diferentes necessidades do mercado, com tecnologia, agilidade e precis\xE3o."), /* @__PURE__ */ React.createElement("div", { className: "service-benefits" }, benefits.map(([title, text]) => /* @__PURE__ */ React.createElement("div", { className: "service-benefit", key: title }, /* @__PURE__ */ React.createElement("div", { className: "service-benefit-icon" }, "\u2713"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "service-benefit-title" }, title), /* @__PURE__ */ React.createElement("div", { className: "service-benefit-text" }, text)))))), /* @__PURE__ */ React.createElement("div", { className: "services-panel reveal reveal-delay-1" }, /* @__PURE__ */ React.createElement("div", { className: "services-kicker" }, /* @__PURE__ */ React.createElement("span", { className: "services-kicker-icon" }, "\u2605"), "Um modelo completo, com diversas oportunidades de faturamento."), /* @__PURE__ */ React.createElement("div", { className: "services-grid" }, svs.map((s) => /* @__PURE__ */ React.createElement("article", { key: s.t, className: "service-card" }, /* @__PURE__ */ React.createElement("div", { className: "service-card-icon" }, s.icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "service-card-title" }, s.t), /* @__PURE__ */ React.createElement("div", { className: "service-card-desc" }, s.d))))), /* @__PURE__ */ React.createElement("div", { className: "services-metrics" }, metrics.map(([value, label, icon]) => /* @__PURE__ */ React.createElement("div", { className: "services-metric", key: value }, /* @__PURE__ */ React.createElement("div", { className: "services-metric-icon" }, icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "services-metric-value" }, value), /* @__PURE__ */ React.createElement("div", { className: "services-metric-label" }, label)))))))));
   }
   function DifferentialsSection() {
     const difs = [
-      { icon: /* @__PURE__ */ React.createElement(SvgPercent, null), t: "Zero Royalties", d: "Modelo de licenciamento \u2014 nenhuma taxa mensal sobre o faturamento." },
+      { icon: /* @__PURE__ */ React.createElement(SvgPercent, null), t: "Zero Royalties", d: "Modelo de licenciamento sem taxa mensal sobre o faturamento." },
       { icon: /* @__PURE__ */ React.createElement(SvgPhone, null), t: "App Exclusivo", d: "Plataforma propriet\xE1ria com checklist digital, laudos autom\xE1ticos e painel de gest\xE3o." },
-      { icon: /* @__PURE__ */ React.createElement(SvgGrad, null), t: "Treinamento Completo", d: "40 horas de forma\xE7\xE3o inicial + capacita\xE7\xE3o cont\xEDnua da equipe CheckFast." },
+      { icon: /* @__PURE__ */ React.createElement(SvgGrad, null), t: "Parcerias estrat\xE9gicas", d: "Time interno especializado na constru\xE7\xE3o de parcerias e receitas recorrentes." },
       { icon: /* @__PURE__ */ React.createElement(SvgHome, null), t: "Opera\xE7\xE3o Flex\xEDvel", d: "Home Based ou Store in Store. Voc\xEA define o modelo que melhor se encaixa." }
     ];
     return /* @__PURE__ */ React.createElement("section", { className: "section section-dark section-differentials" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { variant: "light", subtitle: "O que torna a CheckFast diferente de qualquer outra franquia do setor automotivo." }, "NOSSOS ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "DIFERENCIAIS")), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "20px" } }, difs.map((d, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: `reveal reveal-delay-${i + 1}` }, /* @__PURE__ */ React.createElement(Card, { icon: d.icon, title: d.t, description: d.d, variant: "dark" }))))));
   }
   function ComparisonSection() {
     const rows = [
-      { criteria: "Investimento inicial", competitor: "R$ 150mil\u2013R$ 400mil", checkfast: "A partir de R$ 57mil" },
-      { criteria: "Royalties mensais", competitor: "5%\u201310% do faturamento", checkfast: "Zero royalties" },
-      { criteria: "Taxa de publicidade", competitor: "2%\u20133%", checkfast: "Sem taxas fixas" },
-      { criteria: "Retorno estimado", competitor: "36\u201360 meses", checkfast: "Payback em at\xE9 6 meses" },
+      { criteria: "Investimento inicial", competitor: "R$ 150mil a R$ 400mil", checkfast: "A partir de R$ 57mil" },
+      { criteria: "Royalties mensais", competitor: "5% a 10% do faturamento", checkfast: "Zero royalties" },
+      { criteria: "Taxa de publicidade", competitor: "2% a 3%", checkfast: "Sem taxas fixas" },
+      { criteria: "Retorno estimado", competitor: "24 a 36 meses", checkfast: "Payback em at\xE9 6 meses" },
       { criteria: "Modelo de opera\xE7\xE3o", competitor: "Ponto fixo obrigat\xF3rio", checkfast: "Home Based ou Store in Store" },
-      { criteria: "Suporte p\xF3s-abertura", competitor: "B\xE1sico inicial", checkfast: "Cont\xEDnuo + 360\xB0" }
+      { criteria: "Suporte p\xF3s-abertura", competitor: "B\xE1sico inicial", checkfast: "Suporte cont\xEDnuo + M\xE9todo Incubadora" }
     ];
     return /* @__PURE__ */ React.createElement("section", { className: "section section-neutral" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { align: "center", subtitle: "Veja por que a CheckFast oferece a melhor rela\xE7\xE3o custo-benef\xEDcio entre as franquias automotivas." }, "CHECKFAST VS ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "FRANQUIAS TRADICIONAIS")), /* @__PURE__ */ React.createElement("div", { className: "reveal" }, /* @__PURE__ */ React.createElement(ComparisonTable, { rows }))));
   }
   function SupportSection() {
     const items = [
-      { icon: "\u{1F465}", t: "Suporte de Campo", d: "Equipe regional dispon\xEDvel para visitas e acompanhamento da opera\xE7\xE3o." },
+      { icon: "\u{1F465}", t: "M\xE9todo Incubadora", d: "Acompanhamento de ativa\xE7\xE3o para estruturar opera\xE7\xE3o, rotina comercial e primeiros canais de venda." },
       { icon: "\u{1F4E1}", t: "Plataforma Online", d: "Painel de gest\xE3o, relat\xF3rios e laudos dispon\xEDveis em tempo real." },
       { icon: "\u{1F4DE}", t: "Central de Atendimento", d: "Canais dedicados para franqueados: WhatsApp, e-mail e telefone." }
     ];
-    return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { subtitle: "Voc\xEA nunca opera sozinho. Suporte completo em todas as fases." }, "SUPORTE ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "360\xB0")), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "20px" } }, items.map((s, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: `reveal reveal-delay-${i + 1}` }, /* @__PURE__ */ React.createElement(Card, { icon: s.icon, title: s.t, description: s.d, variant: "light" }))))));
+    return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { subtitle: "Voc\xEA nunca opera sozinho. A franqueadora acompanha estrutura\xE7\xE3o, rotina e evolu\xE7\xE3o comercial." }, "SUPORTE CONT\xCDNUO + ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "M\xC9TODO INCUBADORA")), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "20px" } }, items.map((s, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: `reveal reveal-delay-${i + 1}` }, /* @__PURE__ */ React.createElement(Card, { icon: s.icon, title: s.t, description: s.d, variant: "light" }))))));
+  }
+  function OperatorProfileSection() {
+    const profiles = [
+      { icon: /* @__PURE__ */ React.createElement(SvgGrad, null), title: "Quem deseja empreender", description: "Pessoas que buscam um neg\xF3cio estruturado, com opera\xE7\xE3o clara e suporte da franqueadora." },
+      { icon: /* @__PURE__ */ React.createElement(SvgHome, null), title: "Gestores e ex-empres\xE1rios", description: "Perfis com experi\xEAncia em lideran\xE7a, atendimento ou gest\xE3o comercial." },
+      { icon: /* @__PURE__ */ React.createElement(SvgCar, null), title: "Setor automotivo", description: "Profissionais que j\xE1 conhecem o mercado e querem ampliar atua\xE7\xE3o com tecnologia." },
+      { icon: /* @__PURE__ */ React.createElement(SvgCoin, null), title: "Investidores", description: "Quem procura uma opera\xE7\xE3o enxuta, escal\xE1vel e com possibilidade de receita recorrente." }
+    ];
+    return /* @__PURE__ */ React.createElement("section", { className: "section section-neutral" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { align: "center", subtitle: "O modelo foi pensado para diferentes perfis de investidores e operadores." }, "QUEM PODE OPERAR UMA UNIDADE ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "CHECKFAST?")), /* @__PURE__ */ React.createElement("div", { className: "simple-grid" }, profiles.map((p, i) => /* @__PURE__ */ React.createElement("div", { key: p.title, className: `reveal reveal-delay-${i + 1}` }, /* @__PURE__ */ React.createElement(Card, { icon: p.icon, title: p.title, description: p.description, variant: "light" }))))));
   }
   function ModelsSection({ scrollToForm }) {
     const models = [
@@ -1269,11 +1543,11 @@ var CheckFastApp = (() => {
   function FAQSection() {
     const faqs = [
       { q: "Preciso ter experi\xEAncia no setor automotivo?", a: "N\xE3o. O modelo inclui treinamento completo de 40 horas. O mais importante \xE9 ter perfil empreendedor e disponibilidade." },
-      { q: "H\xE1 royalties ou taxas mensais?", a: "Zero royalties. A CheckFast opera no modelo de licenciamento \u2014 voc\xEA paga uma vez e fica com 100% do faturamento." },
+      { q: "H\xE1 royalties ou taxas mensais?", a: "Zero royalties. A CheckFast opera no modelo de licenciamento. Voc\xEA paga uma vez e fica com 100% do faturamento." },
       { q: "Qual o prazo de retorno do investimento?", a: "A apresenta\xE7\xE3o comercial considera payback em at\xE9 6 meses, com lucratividade m\xE9dia entre 40% e 60%, variando conforme opera\xE7\xE3o e volume mensal." },
       { q: "Posso atuar em qualquer cidade?", a: "Em qualquer cidade onde a CheckFast ainda n\xE3o tenha exclusividade fechada. Nossa equipe verifica disponibilidade na sua regi\xE3o." },
       { q: "O que est\xE1 incluso no investimento inicial?", a: "Taxa de franquia, kit completo de equipamentos, treinamento de 40 horas e acesso vital\xEDcio \xE0 plataforma e atualiza\xE7\xF5es." },
-      { q: "Quanto tempo leva para iniciar a opera\xE7\xE3o?", a: "Em m\xE9dia 30 a 45 dias ap\xF3s a assinatura do contrato \u2014 treinamento, homologa\xE7\xE3o do kit e registro junto ao DETRAN local." }
+      { q: "Quanto tempo leva para iniciar a opera\xE7\xE3o?", a: "Em m\xE9dia 30 a 45 dias ap\xF3s a assinatura do contrato, incluindo capacita\xE7\xE3o, homologa\xE7\xE3o do kit e registro junto ao DETRAN local." }
     ];
     return /* @__PURE__ */ React.createElement("section", { className: "section section-light" }, /* @__PURE__ */ React.createElement("div", { className: "wrap" }, /* @__PURE__ */ React.createElement(SectionTitle, { align: "center", subtitle: "Respostas diretas para quem est\xE1 avaliando a franquia CheckFast." }, "D\xDAVIDAS ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--brand-yellow)" } }, "FREQUENTES")), /* @__PURE__ */ React.createElement("div", { style: { maxWidth: "760px", margin: "0 auto" }, className: "reveal" }, /* @__PURE__ */ React.createElement("div", { className: "faq-list" }, faqs.map((f, i) => /* @__PURE__ */ React.createElement(FAQItem, { key: i, question: f.q, answer: f.a }))))));
   }
@@ -1296,9 +1570,9 @@ var CheckFastApp = (() => {
       { icon: /* @__PURE__ */ React.createElement(SvgCalendar, null), value: "Desde 2018", label: "Franquia consolidada" },
       { icon: /* @__PURE__ */ React.createElement(SvgCoin, null), value: "R$ 57mil", label: "Investimento inicial" },
       { icon: /* @__PURE__ */ React.createElement(SvgPercent, null), value: "0% royalties", label: "100% da receita \xE9 sua" },
-      { icon: /* @__PURE__ */ React.createElement(SvgHome, null), value: "Home Based", label: "Ou Store in Store" },
-      { icon: /* @__PURE__ */ React.createElement(SvgMap, null), value: "Nacional", label: "Em expans\xE3o pelo Brasil" }
-    ] }), /* @__PURE__ */ React.createElement(AuthoritySection, null), /* @__PURE__ */ React.createElement(MarketSection, null), /* @__PURE__ */ React.createElement(PositioningSection, { scrollToForm }), /* @__PURE__ */ React.createElement(ServicesSection, null), /* @__PURE__ */ React.createElement(DifferentialsSection, null), /* @__PURE__ */ React.createElement(ComparisonSection, null), /* @__PURE__ */ React.createElement(SupportSection, null), /* @__PURE__ */ React.createElement(ModelsSection, { scrollToForm }), /* @__PURE__ */ React.createElement(InvestmentSection, { scrollToForm }), /* @__PURE__ */ React.createElement(ProcessSection, null), /* @__PURE__ */ React.createElement(FAQSection, null), /* @__PURE__ */ React.createElement(FinalCTASection, { scrollToForm }), /* @__PURE__ */ React.createElement(FooterSection, null));
+      { icon: /* @__PURE__ */ React.createElement(SvgHome, null), value: "+30", label: "Unidades e franqueados" },
+      { icon: /* @__PURE__ */ React.createElement(SvgMap, null), value: "30min", label: "Tempo m\xE9dio por vistoria" }
+    ] }), /* @__PURE__ */ React.createElement(AuthoritySection, null), /* @__PURE__ */ React.createElement(MarketSection, null), /* @__PURE__ */ React.createElement(MarketGrowthSection, null), /* @__PURE__ */ React.createElement(PositioningSection, { scrollToForm }), /* @__PURE__ */ React.createElement(ServicesSection, null), /* @__PURE__ */ React.createElement(DifferentialsSection, null), /* @__PURE__ */ React.createElement(ComparisonSection, null), /* @__PURE__ */ React.createElement(SupportSection, null), /* @__PURE__ */ React.createElement(OperatorProfileSection, null), /* @__PURE__ */ React.createElement(ModelsSection, { scrollToForm }), /* @__PURE__ */ React.createElement(InvestmentSection, { scrollToForm }), /* @__PURE__ */ React.createElement(ProcessSection, null), /* @__PURE__ */ React.createElement(FAQSection, null), /* @__PURE__ */ React.createElement(FinalCTASection, { scrollToForm }), /* @__PURE__ */ React.createElement(FooterSection, null));
   }
   ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));
 })();
