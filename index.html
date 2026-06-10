@@ -1468,7 +1468,7 @@ var CheckFastApp = (() => {
         });
         if (!response.ok) throw new Error("Falha no envio");
         setLoading(false);
-        setSubmitted(true);
+        window.location.href = "/obrigado";
       } catch (err) {
         setLoading(false);
         alert("Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp.");

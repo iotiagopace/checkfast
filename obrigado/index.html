@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obrigado | CheckFast Franquia</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
+<style>
+@font-face { font-family:'Poppins'; src:url('/assets/fonts/Poppins-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('/assets/fonts/Poppins-SemiBold.ttf') format('truetype'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('/assets/fonts/Poppins-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Poppins'; src:url('/assets/fonts/Poppins-Black.ttf') format('truetype'); font-weight:900; font-style:normal; font-display:swap; }
+:root {
+  --yellow:#F5A623;
+  --yellow-hover:#E09000;
+  --black:#1A1A1A;
+  --muted:rgba(255,255,255,0.68);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  min-height:100svh;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:
+    linear-gradient(105deg, rgba(10,10,10,.94) 0%, rgba(10,10,10,.78) 48%, rgba(10,10,10,.44) 100%),
+    url('/assets/hero-bg.jpg') center/cover no-repeat,
+    #0a0a0a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px 20px;
+}
+.page {
+  width:min(920px,100%);
+  display:grid;
+  gap:34px;
+  justify-items:start;
+}
+.logo {
+  height:104px;
+  width:auto;
+  filter:drop-shadow(0 4px 18px rgba(0,0,0,.35));
+}
+.panel {
+  max-width:720px;
+}
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:var(--yellow);
+  color:var(--black);
+  font-size:26px;
+  font-weight:900;
+  margin-bottom:22px;
+}
+h1 {
+  font-size:clamp(2.1rem,6vw,4.8rem);
+  line-height:.98;
+  letter-spacing:0;
+  text-transform:uppercase;
+  font-weight:900;
+  margin-bottom:20px;
+}
+h1 span { color:var(--yellow); }
+p {
+  max-width:620px;
+  font-size:clamp(1rem,2.2vw,1.2rem);
+  line-height:1.65;
+  color:var(--muted);
+  margin-bottom:28px;
+}
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.btn {
+  min-height:50px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  padding:14px 24px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.btn-primary {
+  background:var(--yellow);
+  color:var(--black);
+  border:2px solid var(--yellow);
+}
+.btn-primary:hover { background:var(--yellow-hover); border-color:var(--yellow-hover); transform:translateY(-1px); }
+.btn-secondary {
+  color:var(--yellow);
+  border:2px solid var(--yellow);
+}
+.btn-secondary:hover { background:var(--yellow); color:var(--black); transform:translateY(-1px); }
+.note {
+  display:grid;
+  gap:8px;
+  grid-template-columns:22px 1fr;
+  max-width:620px;
+  padding:18px 20px;
+  border:1px solid rgba(245,166,35,.22);
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  color:rgba(255,255,255,.72);
+  font-size:14px;
+  line-height:1.55;
+}
+.note strong { color:#fff; }
+@media (max-width:640px) {
+  body { align-items:flex-start; padding-top:28px; }
+  .logo { height:82px; }
+  .actions { width:100%; }
+  .btn { width:100%; }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <img class="logo" src="/assets/logo-dark-bg.png" alt="CheckFast Vistoria Veicular">
+    <section class="panel">
+      <div class="eyebrow">✓</div>
+      <h1>Cadastro <span>recebido</span></h1>
+      <p>Obrigado pelo interesse na franquia CheckFast. Nossa equipe recebeu seus dados e vai entrar em contato para enviar a apresentação e orientar os próximos passos.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://wa.me/5531998620010?text=Olá,%20acabei%20de%20preencher%20o%20formulário%20da%20franquia%20CheckFast." target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="btn btn-secondary" href="/">Voltar para a página</a>
+      </div>
+    </section>
+    <aside class="note">
+      <span>i</span>
+      <div><strong>Próximo passo:</strong> acompanhe seu WhatsApp e e-mail. O contato costuma acontecer em horário comercial.</div>
+    </aside>
+  </main>
+</body>
+</html>
