@@ -1443,7 +1443,7 @@ var CheckFastApp = (() => {
     const submit = async (e) => {
       e.preventDefault();
       setLoading(true);
-      const leadEmail = "eliade@sevenperformance.com.br";
+      const formSubmitToken = "e205e287196c4f85c186eaa9ebb6b382";
       const payload = {
         _subject: "Novo interesse na franquia CheckFast",
         _template: "table",
@@ -1455,7 +1455,7 @@ var CheckFastApp = (() => {
         capital_disponivel: form.capital
       };
       try {
-        const response = await fetch(`https://formsubmit.co/ajax/${leadEmail}`, {
+        const response = await fetch(`https://formsubmit.co/ajax/${formSubmitToken}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
